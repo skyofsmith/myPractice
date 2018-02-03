@@ -5,7 +5,7 @@ var sequence = require('run-sequence');
 var browserify = require('browserify');
 gulp.task('default', function () {
     console.log('default task');
-    sequence('mainjs')
+    sequence('mainjs');
     // shelljs.exec('browserify js/index.js -o js/main.js')
 });
 
