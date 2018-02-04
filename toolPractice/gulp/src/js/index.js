@@ -1,3 +1,5 @@
+angular = require('angular');
+_ = require('lodash');
 angular
     .module('app', [])
     // .controller('Ctrl', Ctrl)

@@ -1,0 +1,38 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browserify": "^15.2.0",
+    "browserify-shim": "^3.8.14",
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.2",
+    "run-sequence": "^2.2.1",
+    "shelljs": "^0.8.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.10.0"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "angular": "angular",
+    "lodash": "_"
+  },
+  "browser": {
+    "angular": "./bower_components/angular/angular.js",
+    "lodash": "./bower_components/lodash/dist/lodash"
+  },
+  "devDependencies": {
+    "gulp-uglify": "^3.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
