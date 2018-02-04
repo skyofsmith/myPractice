@@ -10,10 +10,14 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var coffee = require('gulp-coffee');
 
+var cleanCss = require('gulp-clean-css');
+var concat = require('gulp-concat');
+var sass = require('gulp-sass');
+
 var isProduction = process.env.ENV === 'prod';
 gulp.task('default', function () {
     console.log('default task');
-    sequence('mainjs');
+    sequence('minify-css', 'minify-css-watch', 'coffee', 'coffeeWatch', 'mainjs');
     // sequence('mainjs', 'watch');
     // shelljs.exec('browserify js/index.js -o js/main.js');
 });
@@ -21,7 +25,7 @@ gulp.task('default', function () {
 gulp.task('mainjs', function () {
     // browserify().add('src/js/index.js').bundle().pipe(fs.createWriteStream('js/main.js'));
     var b = browserify({
-        entries: ['src/js/index.js'],
+        entries: ['build/js/index.js'],
         cache: {},
         packageCache: {},
         plugin: [watchify]
@@ -53,7 +57,35 @@ gulp.task('venderjs', function () {
 }); */
 
 gulp.task('coffee', function () {
-    gulp.src('./src/*.coffee')
+    gulp.src('./src/js/*.coffee')
     .pipe(coffee())
     .pipe(gulp.dest('./build/js/'));
+});
+
+gulp.task('coffeeWatch', function () {
+    gulp.watch('src/js/*.coffee', function () {
+        sequence('coffee');
+    });
+});
+
+
+gulp.task('minify-css', function () {
+    gulp.src(['src/css/bootstrap.css', 'src/css/index.css'])
+        .pipe(concat('main.css'))
+        .pipe(cleanCss())
+        .pipe(gulp.dest('css/'));
+});
+
+gulp.task('minify-css-watch', function () {
+    gulp.watch('src/css/*.css', ['minify-css']);
+});
+
+
+gulp.task('sass', function () {
+    gulp.src('src/css/main.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('css/'));
+});
+gulp.task('sass-watch', function () {
+    gulp.watch('src/css/&.scss', ['sass']);
 });

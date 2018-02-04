@@ -51467,36 +51467,59 @@ $provide.value("$locale", {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],3:[function(require,module,exports){
-module.exports = ['$scope', 'Factory', function ($scope, Factory) {
-    $scope.msg = 'hello world!' + Factory.now();
-}];
+(function() {
+  module.exports = [
+    '$scope',
+    'Factory',
+    function($scope,
+    Factory) {
+      return $scope.msg = 'hello world!' + Factory.now() + '';
+    }
+  ];
+
+}).call(this);
+
 },{}],4:[function(require,module,exports){
-module.exports = [function () {
-    return {
+(function() {
+  module.exports = [
+    function() {
+      return {
         restrict: 'EA',
         template: '<div>hahah</div>',
-        link: function () {
-            
-        }
-    };
-}];
+        link: function() {}
+      };
+    }
+  ];
+
+}).call(this);
+
 },{}],5:[function(require,module,exports){
-module.exports = [function () {
-    return {
-        now: function () {
-            return new Date();
+(function() {
+  module.exports = [
+    function() {
+      return {
+        now: function() {
+          return new Date();
         }
-    };
-}];
+      };
+    }
+  ];
+
+}).call(this);
+
 },{}],6:[function(require,module,exports){
-angular = require('angular');
-_ = require('lodash');
-angular
-    .module('app', [])
-    // .controller('Ctrl', Ctrl)
-    .controller('Ctrl', require('./Ctrl.js'))
-    // .factory('Factory', Factory)
-    .factory('Factory', require('./Factory.js'))
-    // .directive('hl', Directive);
-    .directive('hl', require('./Directive.js'));
+(function() {
+  var _, angular;
+
+  angular = require('angular');
+
+  _ = require('lodash');
+
+  // .controller('Ctrl', Ctrl)
+  // .factory('Factory', Factory)
+  // .directive('hl', Directive);
+  angular.module('app', []).controller('Ctrl', require('./Ctrl.js')).factory('Factory', require('./Factory.js')).directive('hl', require('./Directive.js'));
+
+}).call(this);
+
 },{"./Ctrl.js":3,"./Directive.js":4,"./Factory.js":5,"angular":1,"lodash":2}]},{},[6]);
