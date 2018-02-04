@@ -8,6 +8,7 @@ var fs = require('fs');
 var sequence = require('run-sequence');
 var browserify = require('browserify');
 var watchify = require('watchify');
+var coffee = require('gulp-coffee');
 
 var isProduction = process.env.ENV === 'prod';
 gulp.task('default', function () {
@@ -50,3 +51,9 @@ gulp.task('venderjs', function () {
         expose: 'lodash'
     }).bundle().pipe(fs.createWriteStream('js/vender.js'));
 }); */
+
+gulp.task('coffee', function () {
+    gulp.src('./src/*.coffee')
+    .pipe(coffee())
+    .pipe(gulp.dest('./build/js/'));
+});
