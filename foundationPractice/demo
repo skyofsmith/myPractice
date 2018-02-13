@@ -1,6 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,7 +7,6 @@
     <title>Foundation for Sites</title>
     <link rel="stylesheet" href="./foundation.css">
 </head>
-
 <body>
 
     
@@ -16,5 +14,4 @@
     <script src="./what-input.js"></script>
     <script src="./foundation.js"></script>
 </body>
-
 </html>
