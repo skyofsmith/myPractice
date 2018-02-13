@@ -13,5 +13,10 @@
     <script src="./jquery.js"></script>
     <script src="./what-input.js"></script>
     <script src="./foundation.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
 </body>
 </html>
