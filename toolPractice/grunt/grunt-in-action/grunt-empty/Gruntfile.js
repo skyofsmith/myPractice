@@ -72,6 +72,20 @@ module.exports = function (grunt) {
              */
         },
 
+        concat: {
+            options: {
+                separator: ';'
+            },
+            dist: {
+                src: [
+                    '<%= config.app %>/js/index.js',
+                    '<%= config.app %>/js/main.js',
+                    '<%= config.app %>/js/main2.js'
+                ],
+                dest: '<%= config.dist %>/js/concated.js'
+            }
+        },
+
         clean: {
 
             dist: {
@@ -96,4 +110,9 @@ module.exports = function (grunt) {
             }
         }
     });
+
+    grunt.registerTask('build', [
+        'clean',
+        'concat'
+    ]);
 };
