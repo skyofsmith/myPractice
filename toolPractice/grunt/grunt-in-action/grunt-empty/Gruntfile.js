@@ -86,6 +86,75 @@ module.exports = function (grunt) {
             }
         },
 
+        uglify: {
+            options: {
+                sourceMap: true
+            },
+            dist: {
+                files: {
+                    '<%= config.dist %>/js/concated.js': [
+                        '<%= config.dist %>/js/concated.js'
+                    ]
+                }
+            }
+        },
+        // offical
+        // modernizr: {
+        //     dist: {
+        //         "dest": "build/modernizr-custom.js",
+        //         "parseFiles": true,
+        //         "customTests": [],
+        //         "devFile": "/PATH/TO/modernizr-dev.js",
+        //         "outputFile": "/PATH/TO/modernizr-output.js",
+        //         "tests": [
+        //             // Tests 
+        //         ],
+        //         "options": [
+        //             "setClasses"
+        //         ],
+        //         "uglify": true
+        //     }
+        // },
+        modernizr: {
+            dist: {
+                devFile: '/bower_components/modernizr/modernizr-dev.js',
+                outputFile: '/bower_components/modernizr/modernizr-output.js',
+                files: {
+                    src: [
+                    '<%= config.dist %>/js/{,*/}*.js',
+                    '<%= config.dist %>/css/{,*/}*.css',
+                    '!<%= config.dist %>/js/vender/*',
+                    ]
+                }, 
+                uglify: true
+            }
+        },
+        // offical
+        // rev: {
+        //     options: {
+        //         algorithm: 'md5',
+        //         length: 8
+        //     },
+        //     assets: {
+        //         files: [{
+        //             src: [
+        //                 'img/**/*.{jpg,jpeg,gif,png}',
+        //                 'fonts/**/*.{eot,svg,ttf,woff}'
+        //             ]
+        //         }]
+        //     }
+        // },
+        rev: {
+            dist: {
+                files: {
+                    src: [
+                    '<%= config.dist %>/js/{,*/}*.js',
+                    '<%= config.dist %>/css/{,*/}*.css'
+                    ]
+                }
+            }
+        },
+
         clean: {
 
             dist: {

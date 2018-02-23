@@ -1,3 +1,2 @@
-function doThingA(name) {
-    console.log('do thing ', name);
-};doThingA('aa');;doThingA('bb');
+function doThingA(o){console.log("do thing ",o)}doThingA("aa"),doThingA("bb");
+//# sourceMappingURL=concated.js.map
