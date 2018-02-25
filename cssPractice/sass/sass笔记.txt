@@ -1,0 +1,11 @@
+sass a.sass
+//编译文件， 结果显示在控制台
+
+sass a.sass b.css
+//编译文件， 输出的新的css文件
+
+sass a.sass b.css -C
+//不带缓存编译
+
+sass a.sass b.css -sourcemap=none
+//不带.map文件编译
