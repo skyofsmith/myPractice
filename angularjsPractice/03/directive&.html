@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>=</title>
+    <title>&</title>
 </head>
 <body ng-controller="Ctrl">
-    Ctrl:<input type="text" ng-model="person.name">
-    <br>
-    Directive: <hello person="person"></hello>
+    <greet say="sayFunc(name, age, job)"></greet>
     <script src="../../lib/jquery.js"></script>
     <script src="../../lib/angular.js"></script>
     <script>
         var app = angular.module('app', []);
         app.controller('Ctrl', ['$scope', function($scope) {
             $scope.ctrlName = 'Ctrl';
-            $scope.person = {
-                name: 'drzz'
+            $scope.sayFunc = function (name, age, job) {
+                console.log('hello! ' + name + ', you are ' + age + ' year\'s old, and you are a ' + job);
             };
             window.ctrl = $scope;
         }]);
-        app.directive('hello', function(){
+        app.directive('greet', function(){
             return {
                 restrict: 'EA',
                 scope: {
-                    person: '='
+                    say: '&'
                 },
-                template: '<input type="text" ng-model="person.name"/>',
+                template: '<button ng-click="say({name: \'zz\', age: 12, job: \'web\'})">say hello!</button>',
                 link: function(scope, element, attrs) {
                     scope.ctrlName = 'hello';
                     window.hello = scope;
