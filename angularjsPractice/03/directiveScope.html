@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@</title>
+</head>
+<body ng-controller="Ctrl">
+    Ctrl:<input type="text" ng-model="name">
+    <br>
+    Directive: <hello></hello>
+    Directive: <world></world>
+    <script src="../../lib/jquery.js"></script>
+    <script src="../../lib/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('Ctrl', ['$scope', function($scope) {
+            $scope.ctrlName = 'Ctrl';
+            $scope.name = 'drzz';
+            window.ctrl = $scope;
+        }]);
+        app.directive('hello', function(){
+            return {
+                restrict: 'EA',
+                scope: true,
+                template: '<input type="text" ng-model="name"/>',
+                link: function(scope, element, attrs) {
+                    scope.ctrlName = 'hello';
+                    window.hello = scope;
+                }
+            };
+        });
+        app.directive('world', function(){
+            return {
+                restrict: 'EA',
+                scope: false,
+                template: '<input type="text" ng-model="name"/>',
+                link: function(scope, element, attrs) {
+                    scope.ctrlName = 'world';
+                    window.world = scope;
+                }
+            };
+        });
+        setTimeout(function() {
+            console.info('ctrl === world', ctrl === world);
+            console.info('ctrl === hello', ctrl === hello);
+            console.info('ctrl === hello.__proto__', ctrl === hello.__proto__);
+            console.info('ctrl and directive with scope `false`', ctrl === world);
+            
+        }, 3000);
+    </script>
+</body>
+</html>
