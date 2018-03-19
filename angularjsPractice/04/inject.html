@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>a</title>
+</head>
+<body>
+    <div ng-controller="A">
+        {{name}}
+    </div>
+    <hr>
+    <div ng-controller="B">
+        {{name}}
+    </div>
+    <hr>
+    <div ng-controller="C">
+        {{name}}
+    </div>
+
+    <script src="../../lib/jquery.js"></script>
+    <script src="../../lib/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('A', function ($scope) {
+            $scope.name = 'A';
+        });
+        var BCtrl = function ($scope) {
+            $scope.name = 'B';
+        };
+        BCtrl.$inject = ['$scope'];
+        app.controller('B', BCtrl);
+        app.controller('C', ['$scope', function ($scope) {
+            $scope.name = 'C';
+        }]);
+    </script>
+</body>
+</html>
