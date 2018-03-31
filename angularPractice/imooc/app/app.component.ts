@@ -12,6 +12,6 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(){
-        this.greeting = 'angular2';
+        this.greeting = 'Angular2';
     }
 }

@@ -14,7 +14,7 @@ var AppComponent = /** @class */ (function () {
     function AppComponent() {
     }
     AppComponent.prototype.ngOnInit = function () {
-        this.greeting = 'angular2';
+        this.greeting = 'Angular2';
     };
     AppComponent = __decorate([
         core_1.Component({
