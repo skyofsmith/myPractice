@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { Semantic } from 'semantic-ui';
+
 
 import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';

@@ -13,7 +13,11 @@
     Submit link
   </button>
 </form>
+<!-- start adding here -->
 <div class="ui grid posts">
-  <app-article>
+  <app-article
+  *ngFor="let article of articles"
+  [article]="article">
   </app-article>
 </div>
+<!-- end adding here -->
