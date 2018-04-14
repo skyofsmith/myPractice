@@ -14,7 +14,4 @@ export class ProductImageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
 }
