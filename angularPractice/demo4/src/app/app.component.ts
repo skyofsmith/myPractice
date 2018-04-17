@@ -31,4 +31,31 @@ export class AppComponent {
   isBordered: boolean = true;
   classesObj: Object = {'bordered-box': false };
   classList: string[] = ['blue', 'round'];
+
+  //ngFor
+  cities: string[] = ['Miami', 'Sao Paulo', 'New York'];
+  people: Object[] = [
+    { name: 'Anderson', age: 35, city: 'Sao Paulo' },
+    { name: 'John', age: 12, city: 'Miami' },
+    { name: 'Peter', age: 22, city: 'New York' }
+  ];
+  peopleByCity: Object[] = [
+    {
+      city: 'Miami',
+      people: [
+        { name: 'John', age: 12 },
+        { name: 'Angel', age: 22 }
+      ]
+    },
+    {
+      city: 'Sao Paulo',
+      people: [
+        { name: 'Anderson', age: 35 },
+        { name: 'Felipe', age: 36 }
+      ]
+    }
+  ];
+
+  //ngNonBindable
+  content: string = 'Some text';
 }
