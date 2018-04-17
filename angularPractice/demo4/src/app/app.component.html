@@ -1,0 +1,18 @@
+<div class="">
+  <h3>ngIf</h3>
+  <div *ngIf="false">*ngIf="false"</div><!-- never displayed -->
+  <div *ngIf="a > b">*ngIf="a > b", a = {{a}}, b = {{b}};</div><!-- displayed if a is more than b -->
+  <div *ngIf="str == 'yes'">*ngIf="str == 'yes'", str = {{str}};</div><!-- displayed if str holds the string "yes" -->
+  <div *ngIf="myFunc()">*ngIf="myFunc()", myFunc returns {{myFunc()}};</div><!-- displayed if myFunc returns a true value -->
+</div>
+
+<div class="">
+  <h3>ngSwitch</h3>
+  myVar:{{myVar}};
+  <button type="button" (click)="myVar = 'A'">A</button>
+  <button type="button" (click)="myVar = 'B'">B</button>
+  <button type="button" (click)="myVar = 'C'">C</button>
+  <div *ngIf="myVar == 'A'">Var is A</div>
+  <div *ngIf="myVar == 'B'">Var is B</div>
+  <div *ngIf="myVar != 'A' && myVar != 'B'">Var is something else</div>
+</div>
