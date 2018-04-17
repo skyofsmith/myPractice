@@ -16,4 +16,19 @@ export class AppComponent {
 
   //ngSwitch variable
   myVar: string = 'A';
+
+  choice: number = 2;
+
+  //ngStyle
+  color: string;
+  fontSize: number;
+  apply(color: string, fontSize: number) {
+    this.color = color;
+    this.fontSize = fontSize;
+  }
+
+  //ngClass
+  isBordered: boolean = true;
+  classesObj: Object = {'bordered-box': false };
+  classList: string[] = ['blue', 'round'];
 }
