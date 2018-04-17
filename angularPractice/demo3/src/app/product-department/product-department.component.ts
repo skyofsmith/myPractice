@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
 
 @Component({
-  selector: 'app-product-department',
+  selector: 'product-department',
   inputs: ['product'],
   templateUrl: './product-department.component.html',
   styleUrls: ['./product-department.component.css']

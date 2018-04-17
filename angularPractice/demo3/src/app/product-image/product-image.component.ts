@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
 
 @Component({
-  selector: 'app-product-image',
+  selector: 'product-image',
   host: {class: 'ui small image'},
   inputs: ['product'],
   templateUrl: './product-image.component.html',
