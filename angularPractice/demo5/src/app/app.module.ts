@@ -4,11 +4,8 @@ import {
   FormsModule,
   ReactiveFormsModule
 } from '@angular/forms';
-
-
 import { FormsDemoApp } from './app.component';
 import { DemoFormSkuComponent } from './demo-form-sku/demo-form-sku.component';
-
 
 @NgModule({
   declarations: [
