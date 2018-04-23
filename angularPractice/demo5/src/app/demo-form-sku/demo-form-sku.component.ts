@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemoFormSkuComponent implements OnInit {
 
+  onSubmit(v, fm): void {
+    console.info(v, fm);
+  }
+
   constructor() { }
   ngOnInit() { }
 
