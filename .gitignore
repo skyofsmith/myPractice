@@ -1,5 +1,6 @@
 README.md
 /*.md
 .vscode/*
+.vs/
 .idea/*
 /node_modules
