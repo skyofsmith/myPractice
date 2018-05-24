@@ -1,5 +1,4 @@
-/*.md
-.vscode/*
+.vscode/
 .vs/
 .idea/*
 /node_modules
