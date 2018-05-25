@@ -11,7 +11,7 @@ import {
   templateUrl: './demo-form-sku-with-builder.component.html',
   styleUrls: ['./demo-form-sku-with-builder.component.css']
 })
-export class DemoFormWithValidationsExplicit {
+export class DemoFormSkuWithBuilderComponent {
 
   myForm: FormGroup;
   sku: AbstractControl;
