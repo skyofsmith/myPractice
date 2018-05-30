@@ -32,5 +32,6 @@
 
 ### demo1 ###
 
-### org
+### org ###
+
 > practice code at cn.vuejs.org
