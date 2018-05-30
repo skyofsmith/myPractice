@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过渡</title>
+    <style lang="">
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+    .list-item {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .list-enter-active, .list-leave-active {
+        transition: all 1s;
+    }
+    .list-enter, .list-leave-to
+        /* .list-leave-active for below version 2.1.8 */ {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    .flip-list-move {
+        transition: transform 1s;
+    }
+    </style>
+</head>
+<body>
+    <div id="demo1">
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+        <transition name="fade">
+            <p v-if="show">hello</p>
+        </transition>
+        <hr>
+        <input type="radio" value="v-a" v-model="view">
+        <input type="radio" value="v-b" v-model="view">
+        <transition name="fade" mode="out-in">
+            <component v-bind:is="view"></component>
+        </transition>
+        <h4>list render: </h4>
+        <div id="list-demo" class="demo">
+            <button v-on:click="add">Add</button>
+            <button v-on:click="remove">Remove</button>
+            <button v-on:click="shuffle">Shuffle</button>
+            <transition-group name="list" tag="p">
+                <span v-for="item in items" v-bind:key="item" class="list-item">
+                    {{ item }}
+                </span>
+            </transition-group>
+            <transition-group name="flip-list" tag="ul">
+                <li v-for="item in items" v-bind:key="item" class="list-item">
+                    {{ item }}
+                </li>
+            </transition-group>
+        </div>
+    </div>
+    <script src="../../lib/lodash/lodash.js"></script>
+    <script src="../../lib/vue/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#demo1',
+            data: {
+                show: true,
+                view: 'v-a',
+                items: [1,2,3,4,5,6,7,8,9],
+                nextNum: 10
+            },
+            methods: {
+                randomIndex: function () {
+                    return Math.floor(Math.random() * this.items.length)
+                },
+                add: function () {
+                    this.items.splice(this.randomIndex(), 0, this.nextNum++)
+                },
+                remove: function () {
+                    this.items.splice(this.randomIndex(), 1)
+                },
+                shuffle: function () {
+                    this.items = _.shuffle(this.items)
+                }
+            },
+            components: {
+                'v-a': {
+                    template: '<div>Component A</div>'
+                },
+                'v-b': {
+                    template: '<div>Component B</div>'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
