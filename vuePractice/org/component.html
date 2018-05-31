@@ -27,6 +27,9 @@
         <zz-comp :prop-a="1" :prop-b="'abc'" :prop-c="'abc'" :prop-f="'success'"></zz-comp>
         <base-input v-model="username" class="username-input" placeholder="Enter your username"></base-input>
     </div>
+    <div id="demo3">
+
+    </div>
     <script src="../../lib/lodash/lodash.js"></script>
     <script src="../../lib/vue/vue.js"></script>
     <script>
@@ -73,7 +76,7 @@
             },
             template: '<div>{{p.name}}, {{p.age}}</div>'
         });
-        var def = new Vue({
+        var demo1 = new Vue({
             el: '#demo1',
             data: {
                 p1: person1
@@ -147,6 +150,13 @@
                 string: 'abc',
                 username: 'zz'
             }
+        });
+        var demo3 = new Vue({
+            el: '#demo3',
+            data: {
+
+            },
+
         });
     </script>
 </body>
