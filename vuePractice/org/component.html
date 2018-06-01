@@ -30,6 +30,8 @@
     <div id="demo3">
         <my-event @myEvent="alert('myEvent')"></my-event>
         <zz-event @zz-event="alert('zz')"></zz-event>
+        lovingVue is {{lovingVue}}
+        <base-checkbox v-model="lovingVue"></base-checkbox>
     </div>
     <script src="../../lib/lodash/lodash.js"></script>
     <script src="../../lib/vue/vue.js"></script>
@@ -174,9 +176,27 @@
                 }
             }
         });
+        Vue.component('base-checkbox', {
+            model: {
+                prop: 'checked',
+                event: 'change'
+            },
+            props: {
+                checked: Boolean
+            },
+            template: `
+    <input
+        type="checkbox"
+        v-bind:checked="checked"
+        v-on:change="$emit('change', $event.target.checked)"
+    >
+`
+        });
         var demo3 = new Vue({
             el: '#demo3',
-            data: {},
+            data: {
+                lovingVue: true
+            },
             methods: {
                 alert: function (msg) {
                     console.info('alert', msg);
