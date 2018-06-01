@@ -27,7 +27,7 @@
         <zz-comp :prop-a="1" :prop-b="'abc'" :prop-c="'abc'" :prop-f="'success'"></zz-comp>
         <base-input v-model="username" class="username-input" placeholder="Enter your username"></base-input>
     </div>
-    <div id="demo3">
+    <div id="demo3" @myEvent="alert('my')" @zz-event="alert('zz')">
 
     </div>
     <script src="../../lib/lodash/lodash.js"></script>
@@ -155,13 +155,22 @@
                 }
             }
         });
+        //custom event
         var demo3 = new Vue({
             el: '#demo3',
             data: {
 
             },
-
+            methods: {
+                alert: function (msg) {
+                    console.info('alert', msg);
+                }
+            }
         });
+        setTimeout(function () {
+            demo3.$emit('myEvent');
+            demo3.$emit('zz-event');
+        }, 2000);
     </script>
 </body>
 
