@@ -38,6 +38,7 @@
             this.age = age;
         }
         var person1 = new Person('sam', 26);
+        console.info('person1 instanceof Person', person1 instanceof Person);
         Vue.component('com-a', {
             template: '<div>com-a</div>'
         });
@@ -139,7 +140,7 @@
             template: `
 <label>
     {{ label }}
-    <input v-bind="$attrs" v-bind:value="value" v-on:input="$emit('input', $event.target.value)">
+    <input style="border: gray solid 1px;" v-bind="$attrs" v-bind:value="value" v-on:input="$emit('input', $event.target.value)">
 </label>
 `
         });
@@ -148,7 +149,10 @@
             data: {
                 num: 2,
                 string: 'abc',
-                username: 'zz'
+                username: {
+                    label: 'name',
+                    value: 'zz'
+                }
             }
         });
         var demo3 = new Vue({
