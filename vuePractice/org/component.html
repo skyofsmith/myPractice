@@ -185,12 +185,12 @@
                 checked: Boolean
             },
             template: `
-<input
-    type="checkbox"
-    v-bind:checked="checked"
-    v-on:change="$emit('change', $event.target.checked)"
->
-`
+                <input
+                    type="checkbox"
+                    v-bind:checked="checked"
+                    v-on:change="$emit('change', $event.target.checked)"
+                >
+            `
         });
         var demo3 = new Vue({
             el: '#demo3',
