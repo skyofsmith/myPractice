@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <div id="demo1">
         lovingVue is {{lovingVue}}
         <base-checkbox v-model="lovingVue"></base-checkbox>
@@ -28,10 +27,15 @@
             <input type="checkbox" v-bind:checked="checked" v-on:change="$emit('change', $event.target.checked)">
             `
         });
-        new Vue({
+        var demo1 = new Vue({
             el: '#demo1',
             data: {
                 lovingVue: false
+            },
+            watch: {
+                lovingVue: function (nv, ov) {
+                    console.info('lovingVue', nv, ov);
+                }
             }
         });
     </script>
