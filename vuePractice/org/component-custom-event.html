@@ -11,7 +11,12 @@
 <body>
     <div id="demo1">
         lovingVue is {{lovingVue}}
+        <br>
         <base-checkbox v-model="lovingVue"></base-checkbox>
+        <br> text is {{text}}
+        <br>
+        <base-input v-model="text"></base-input>
+        <br>
     </div>
     <script src="../../lib/vue/vue.js"></script>
     <script>
@@ -27,14 +32,30 @@
             <input type="checkbox" v-bind:checked="checked" v-on:change="$emit('change', $event.target.checked)">
             `
         });
+        Vue.component('base-input', {
+            model: {
+                prop: 'text',
+                event: 'keyup'
+            },
+            props: {
+                text: String
+            },
+            template: `
+<input type="text" v-bind:value="text" v-on:keyup="$emit('keyup', $event.target.value)">
+            `
+        });
         var demo1 = new Vue({
             el: '#demo1',
             data: {
-                lovingVue: false
+                lovingVue: false,
+                text: 'abc'
             },
             watch: {
                 lovingVue: function (nv, ov) {
                     console.info('lovingVue', nv, ov);
+                },
+                text: function (nv, ov) {
+                    console.info('text', nv, ov);
                 }
             }
         });
