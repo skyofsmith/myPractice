@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot</title>
+</head>
+
+<body>
+
+    <script src="../../lib/vue/vue.js"></script>
+    <h4>作用域插槽</h4>
+    <div id="demo1">
+        <todo-list :todos="todos"></todo-list>
+        <hr>
+        <todo-list v-bind:todos="todos">
+            <!-- 将 `slotProps` 定义为插槽作用域的名字 -->
+            <template slot-scope="slotProps">
+                <!-- 为待办项自定义一个模板，-->
+                <!-- 通过 `slotProps` 定制每个待办项。-->
+                <span v-if="slotProps.todo.isComplete">✓</span>
+                {{msg}}:{{ slotProps.todo.text }}
+            </template>
+        </todo-list>
+        <hr>
+        <todo-list v-bind:todos="todos">
+            <template slot-scope="{ todo }">
+                <span v-if="todo.isComplete">✓</span>
+                {{msg}}:{{ todo.text }}
+            </template>
+        </todo-list>
+    </div>
+    <script>
+        Vue.component('todo-list', {
+            props: ['todos'],
+            template: `
+                <ul>
+                    <li v-for="todo in todos" v-bind:key="todo.id">
+                        <!-- 我们为每个 todo 准备了一个插槽，-->
+                        <!-- 将 \`todo \` 对象作为一个插槽的 prop 传入。-->
+                        <slot v-bind:todo="todo">
+                            <!-- 回退的内容 -->
+                            {{ todo.text }}
+                        </slot>
+                    </li>
+                </ul>
+            `
+        });
+        new Vue({
+            el: '#demo1',
+            data: {
+                msg: 'msg',
+                todos: [{
+                        id: 1,
+                        text: 'sam'
+                    },
+                    {
+                        id: 2,
+                        text: 'drzz'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>
