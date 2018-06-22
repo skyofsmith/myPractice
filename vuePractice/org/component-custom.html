@@ -12,7 +12,9 @@
 
 <body>
     <div id="demo1">
-
+        <button @click="cpn = 'post'">post</button>
+        <button @click="cpn = 'art'">art</button>
+        <component :is="cpn"></component>
     </div>
     <div id="demo2">
     </div>
@@ -24,10 +26,37 @@
         var demo1 = new Vue({
             el: '#demo1',
             data: {
-                p1: ''
+                cpn: 'post'
             },
             components: {
-
+                post: {
+                    template: `
+                        <div>
+                            <div style="width: 100px;height: 200px; float:left;">
+                                <div @click="curTab = 'a'">a</div>
+                                <div @click="curTab = 'b'">b</div>
+                                <div @click="curTab = 'c'">c</div>
+                            </div>
+                            <div style="width: 300px;height: 200px; float:left;" v-show="curTab === 'a'">
+                                aaaaaaaaaaaaa
+                            </div>
+                            <div style="width: 300px;height: 200px; float:left;" v-show="curTab === 'b'">
+                                bbbbbbbbbbbbb
+                            </div>
+                            <div style="width: 300px;height: 200px; float:left;" v-show="curTab === 'c'">
+                                ccccccccccccc
+                            </div>
+                        </div>
+                    `,
+                    data: function () {
+                        return {
+                            curTab: 'a'
+                        };
+                    }
+                },
+                art: {
+                    template: `<div>art</div>`
+                }
             },
             methods: {}
         });
@@ -35,26 +64,14 @@
         var demo2 = new Vue({
             el: '#demo2',
             data: {
-                num: 2,
-                string: 'abc',
-                user: {
-                    label: 'name',
-                    value: 'zz'
-                },
-                username: 'a'
+
             }
         });
 
         var demo3 = new Vue({
             el: '#demo3',
-            data: {
-                lovingVue: true
-            },
-            methods: {
-                alert: function (msg) {
-                    console.info('alert', msg);
-                }
-            }
+            data: {},
+            methods: {}
         });
     </script>
 </body>
