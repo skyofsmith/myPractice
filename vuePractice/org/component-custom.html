@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component</title>
+    <style lang="">
+    </style>
+</head>
+
+<body>
+    <div id="demo1">
+
+    </div>
+    <div id="demo2">
+    </div>
+    <div id="demo3">
+    </div>
+    <script src="../../lib/lodash/lodash.js"></script>
+    <script src="../../lib/vue/vue.js"></script>
+    <script>
+        var demo1 = new Vue({
+            el: '#demo1',
+            data: {
+                p1: ''
+            },
+            components: {
+
+            },
+            methods: {}
+        });
+
+        var demo2 = new Vue({
+            el: '#demo2',
+            data: {
+                num: 2,
+                string: 'abc',
+                user: {
+                    label: 'name',
+                    value: 'zz'
+                },
+                username: 'a'
+            }
+        });
+
+        var demo3 = new Vue({
+            el: '#demo3',
+            data: {
+                lovingVue: true
+            },
+            methods: {
+                alert: function (msg) {
+                    console.info('alert', msg);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
