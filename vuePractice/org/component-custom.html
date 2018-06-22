@@ -14,7 +14,18 @@
     <div id="demo1">
         <button @click="cpn = 'post'">post</button>
         <button @click="cpn = 'art'">art</button>
-        <component :is="cpn"></component>
+        <br> not use keep alive
+        <component :is="cpn" style="clear:both;"></component>
+        <br>
+        <h4>
+            use keepalive
+        </h4>
+        <br>
+        <keep-alive>
+            <component :is="cpn">
+            </component>
+        </keep-alive>
+        <br>
     </div>
     <div id="demo2">
     </div>
@@ -31,7 +42,7 @@
             components: {
                 post: {
                     template: `
-                        <div>
+                        <div style="clear: both;height: 200px;">
                             <div style="width: 100px;height: 200px; float:left;">
                                 <div @click="curTab = 'a'">a</div>
                                 <div @click="curTab = 'b'">b</div>
