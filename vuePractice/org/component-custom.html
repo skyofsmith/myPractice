@@ -27,10 +27,6 @@
         </keep-alive>
         <br>
     </div>
-    <div id="demo2">
-    </div>
-    <div id="demo3">
-    </div>
     <script src="../../lib/lodash/lodash.js"></script>
     <script src="../../lib/vue/vue.js"></script>
     <script>
@@ -84,6 +80,32 @@
             data: {},
             methods: {}
         });
+    </script>
+    <div id="demo2">
+        <hr>
+        <hr>
+        <h4>async-example</h4>
+        <async-example></async-example>
+    </div>
+    <div id="demo3">
+    </div>
+    <script>
+        Vue.component('async-example', function (resolve, reject) {
+            setTimeout(function () {
+                // 向 `resolve` 回调传递组件定义
+                resolve({
+                    template: '<div>I am async!</div>'
+                })
+            }, 1000)
+        });
+        var demo2 = new Vue({
+            el: '#demo2',
+            // ...
+            components: {
+                'my-component': () =>
+                    import ('./my-async-component')
+            }
+        })
     </script>
 </body>
 
