@@ -12,6 +12,39 @@
 <body>
 
 
+    <script>
+        // Vue 根实例
+        new Vue({
+            data: {
+                foo: 1
+            },
+            computed: {
+                bar: function () { /* ... */ }
+            },
+            methods: {
+                baz: function () {
+                    /* ...
+                     */
+                }
+            }
+        });
+    </script>
+    <div id="demo1">
+        <span>{{demo1foo}}</span>
+    </div>
+    <script>
+        new Vue({
+            el: '#demo1',
+            data: {
+
+            },
+            computed: {
+                demo1foo: function () {
+                    return this.$root.foo;
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
