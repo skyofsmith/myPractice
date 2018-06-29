@@ -10,39 +10,32 @@
 </head>
 
 <body>
+
     <div id="demo1">
-
+        <span>{{name}},{{NAME}}</span>
+        <c1></c1>
     </div>
-
     <script>
-        // Vue 根实例
-        new Vue({
-            data: {
-                foo: 1
-            },
-            computed: {
-                bar: function () { /* ... */ }
-            },
-            methods: {
-                baz: function () {
-                    /* ...
-                     */
+        Vue.component('c1', {
+            template: '<div>{{$root.name}},{{$root.NAME}}</div>',
+            // template: '<div>{{nm}},{{NM}}</div>',
+            cumputed: {
+                nm: function () {
+                    return this.$root.name;
+                },
+                NM: function () {
+                    return this.$root.NAME;
                 }
             }
         });
-    </script>
-    <div id="demo1">
-        <span>{{demo1foo}}</span>
-    </div>
-    <script>
         var demo1 = new Vue({
             el: '#demo1',
             data: {
-
+                name: 'demo1'
             },
             computed: {
-                demo1foo: function () {
-                    return this.$root.foo;
+                NAME: function () {
+                    return this.name.toUpperCase();
                 }
             }
         });
