@@ -17,15 +17,21 @@
     </div>
     <script>
         Vue.component('c1', {
-            template: '<div>{{$root.name}},{{$root.NAME}}</div>',
-            // template: '<div>{{nm}},{{NM}}</div>',
+            // template: '<div>{{$root.name}},{{$root.NAME}}</div>',
+            template: '<div>{{nm}},{{NM}}</div>',
+            data: function () {
+                return {
+                    nm: this.$root.name,
+                    NM: this.$root.NAME
+                }
+            },
             cumputed: {
-                nm: function () {
+                /* nm: function () {
                     return this.$root.name;
                 },
                 NM: function () {
                     return this.$root.NAME;
-                }
+                } */
             }
         });
         var demo1 = new Vue({
