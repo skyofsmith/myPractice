@@ -49,16 +49,27 @@
         <c2></c2>
     </div>
     <script>
-        Vue.component('c2', {
+        Vue.component('c3', {
             template: `
-                <div>{{nm}}</div>
+                <div>{{name}}</div>
             `,
             data: function () {
                 return {
-                    nm: this.$parent.name
+                    name: 'c3'
                 };
             }
-        })
+        });
+        Vue.component('c2', {
+            template: `
+                <div>{{nm}}, child ct name is [{{childName}}]<br>c3: <c3 ref="ct"></c3></div>
+            `,
+            data: function () {
+                return {
+                    nm: this.$parent.name,
+                    childName: this.$refs.ct.name
+                };
+            }
+        });
         var demo2 = new Vue({
             el: '#demo2',
             data: {
