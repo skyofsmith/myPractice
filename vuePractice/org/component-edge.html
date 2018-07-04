@@ -61,13 +61,18 @@
         });
         Vue.component('c2', {
             template: `
-                <div>{{nm}}, child ct name is [{{childName}}]<br>c3: <c3 ref="ct"></c3></div>
+                <div>{{nm}}, child ct name is [{{childName()}}]<br>c3: <c3 ref="ct"></c3></div>
             `,
             data: function () {
                 return {
                     nm: this.$parent.name,
-                    childName: this.$refs.ct.name
+                    // childName: this.$refs.ct.name
                 };
+            },
+            methods: {
+                childName: function () {
+                    return this.$refs.ct.name;
+                }
             }
         });
         var demo2 = new Vue({
