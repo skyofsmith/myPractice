@@ -61,7 +61,7 @@
         });
         Vue.component('c2', {
             template: `
-                <div>{{nm}}, child ct name is [{{childName()}}]<br>c3: <c3 ref="ct"></c3></div>
+                <div>{{nm}}, <button @click="getChildName">getChildName</button><br>c3: <c3 ref="ct"></c3></div>
             `,
             data: function () {
                 return {
@@ -70,8 +70,8 @@
                 };
             },
             methods: {
-                childName: function () {
-                    return this.$refs.ct.name;
+                getChildName: function () {
+                    console.info(this.$refs.ct.name);
                 }
             }
         });
