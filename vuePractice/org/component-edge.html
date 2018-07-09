@@ -82,6 +82,154 @@
             }
         });
     </script>
+    <div id="demo3">
+        <dc1></dc1>
+    </div>
+    <script>
+        new Vue({
+            el: '#demo3',
+            data: {
+                name: 'demo3'
+            },
+            methods: {
+                getName: function () {
+                    console.info('demo3:', this.name);
+                }
+            },
+            components: {
+                dc1: {
+                    template: '<div><div>{{name}}</div><button @click="getName">getName</button><dc2></dc2></div>',
+                    data: function () {
+                        return {
+                            name: 'dc1'
+                        };
+                    },
+                    methods: {
+                        getName: function () {
+                            console.info('dc1:', this.name);
+                            this.$parent.getName();
+                        }
+                    },
+                    components: {
+                        dc2: {
+                            template: '<div><div>{{name}}</div><button @click="getName">getName</button></div>',
+                            data: function () {
+                                return {
+                                    name: 'dc2'
+                                };
+                            },
+                            methods: {
+                                getName: function () {
+                                    console.info('dc2:', this.name);
+                                    this.$parent.getName();
+                                    this.$parent.$parent.getName();
+                                }
+                            }
+                        },
+                    }
+                },
+            }
+        });
+    </script>
+    <div id="demo4">
+        <dc1></dc1>
+    </div>
+    <script>
+        var demo4 = new Vue({
+            el: '#demo4',
+            data: {
+                name: 'demo4'
+            },
+            methods: {
+                getDemoName: function () {
+                    return this.name;
+                }
+            },
+            provide: function () {
+                return {
+                    getDemoName: this.getDemoName
+                }
+            },
+            components: {
+                dc1: {
+                    template: '<div><div>{{name}}</div><button @click="getName">getName</button><dc2></dc2></div>',
+                    data: function () {
+                        return {
+                            name: 'dc1'
+                        };
+                    },
+                    inject: ['getDemoName'],
+                    methods: {
+                        getName: function () {
+                            console.info('dc1:', this.name, this.getDemoName());
+                        }
+                    },
+                    components: {
+                        dc2: {
+                            template: '<div><div>{{name}}</div><button @click="getName">getName</button></div>',
+                            data: function () {
+                                return {
+                                    name: 'dc2'
+                                };
+                            },
+                            inject: ['getDemoName'],
+                            methods: {
+                                getName: function () {
+                                    console.info('dc2:', this.name, this.getDemoName());
+                                }
+                            }
+                        },
+                    }
+                }
+            }
+        });
+    </script>
+    <div id="demo5">
+        <hello-world></hello-world>
+        <my-component inline-template>
+            <div style="border: red solid 1px;">
+                {{name}}
+                <p>These are compiled as the component's own template.</p>
+                <p>Not parent's transclusion content.</p>
+            </div>
+        </my-component>
+        <my-component inline-template>
+            <div style="border: red solid 1px;">
+                {{name}}
+            </div>
+        </my-component>
+        <f-l :count="count"></f-l>
+    </div>
+    <script type="text/x-template" id="hello-world-template">
+        <p>Hello hello hello</p>
+    </script>
+    <script>
+        Vue.component('hello-world', {
+            template: '#hello-world-template'
+        });
+        Vue.component('my-component', {
+            data: function () {
+                return {
+                    name: 'my-component'
+                };
+            }
+        });
+        Vue.component('f-l', {
+            props: ['count'],
+            template: `
+                    <legend v-if="count > 0">
+                        <fieldset>{{count}}</fieldset>
+                        <f-l :count="count - 1"></f-l>
+                    </legend>
+                    `
+        });
+        var demo5 = new Vue({
+            el: '#demo5',
+            data: {
+                count: 5
+            }
+        });
+    </script>
 </body>
 
 </html>
