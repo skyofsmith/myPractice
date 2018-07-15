@@ -34,7 +34,10 @@
             }
         });
     </script>
-    <div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
+    <div id="hook-arguments-example">
+        <div v-demo:foo.a.b="message"></div>
+        <div v-demo:maohaohoumian.dian.dian2="yinhaolimiamneirong"></div>
+    </div>
     <script>
         Vue.directive('demo', {
             bind: function (el, binding, vnode) {
@@ -52,7 +55,11 @@
         new Vue({
             el: '#hook-arguments-example',
             data: {
-                message: 'hello!'
+                message: 'hello!',
+                yinhaolimiamneirong: 'zheshineirong'
+            },
+            methods: {
+
             }
         });
     </script>
