@@ -62,6 +62,25 @@
 
             }
         });
+        Vue.directive('color-swatch', function (el, binding) {
+            el.style.backgroundColor = binding.value
+        });
+    </script>
+    <hr>
+    <div v-demo="{ color: 'white', text: 'hello!' }">啊啊啊啊啊啊</div>
+    <div id="demo2">
+    </div>
+    <script>
+        Vue.directive('demo', function (el, binding) {
+            console.log(binding.value.color) // => "white"
+            console.log(binding.value.text) // => "hello!"
+        });
+        var demo2 = new Vue({
+            el: '#demo2',
+            data: {
+
+            }
+        });
     </script>
 </body>
 
