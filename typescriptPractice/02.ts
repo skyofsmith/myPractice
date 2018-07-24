@@ -1,3 +1,4 @@
 class Shape {
+  name;
   constructor() {}
 }
