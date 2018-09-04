@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>controller Property in directive</title>
+</head>
+<body ng-app="myApp" ng-controller="Ctrl">
+    <zpp></zpp>
+    <zpp></zpp>
+    <zpp></zpp>
+
+    <script src="../../lib/jquery.js"></script>
+    <script src="../../lib/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.directive('zpp', [function(){
+            return {
+                restrict: 'E',
+                replace: true,
+                templateUrl: 'directice.controller.template.html',
+                controller: ['$scope', function ($scope) {
+                    $scope.list = [
+                        {
+                            name: 'asd'
+                        },
+                        {
+                            name: 'qwe'
+                        },
+                        {
+                            name: 'zxc'
+                        }
+                    ];
+                }]
+            };
+        }]);
+        app.controller('Ctrl', ['$scope', function ($scope) {
+            
+        }]);
+    </script>
+</body>
+</html>
