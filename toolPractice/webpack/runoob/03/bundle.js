@@ -95,8 +95,8 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {
-	module.hot.accept("!!./node_modules/_css-loader@1.0.0@css-loader/index.js!./style.css", function() {
-		var newContent = require("!!./node_modules/_css-loader@1.0.0@css-loader/index.js!./style.css");
+	module.hot.accept("!!../node_modules/_css-loader@1.0.0@css-loader/index.js!./style.css", function() {
+		var newContent = require("!!../node_modules/_css-loader@1.0.0@css-loader/index.js!./style.css");
 
 		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 
