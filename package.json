@@ -11,7 +11,8 @@
     "bootstrap": "^4.1.3",
     "element-ui": "^2.4.6",
     "vue": "^2.5.17",
-    "vue-cli-plugin-apollo": "^0.15.0"
+    "vue-cli-plugin-apollo": "^0.15.0",
+    "webpack": "^3.12.0"
   },
   "devDependencies": {},
   "scripts": {
