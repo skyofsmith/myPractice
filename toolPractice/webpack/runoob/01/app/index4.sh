@@ -1,4 +1,4 @@
 #!/bin/bash
 
-webpack runoob4.js bundle4.js --module-bind 'css=style-loader!css-loader'
+webpack runoob5.js bundle4.js --module-bind 'css=style-loader!css-loader'
 
