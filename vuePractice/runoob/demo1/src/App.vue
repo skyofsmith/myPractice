@@ -2,12 +2,23 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
-    <firstcomponent></firstcomponent>
+    <!-- <firstcomponent></firstcomponent>
+    <secondcomponent></secondcomponent> -->
+    <ul>
+      <li>
+        <router-link to="/first">点我跳转到第一页</router-link>
+      </li>
+      <li>
+        <router-link to="/first">点我跳转到第一页</router-link>
+      </li>
+    </ul>
+    <router-view class="view"></router-view>
   </div>
 </template>
 
 <script>
 import firstcomponent from './components/firstcomponent.vue'
+import secondcomponent from './components/secondcomponent.vue'
 export default {
   name: 'app',
   data () {
@@ -15,7 +26,7 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
-  components: { firstcomponent }
+  components: { firstcomponent, secondcomponent }
 }
 </script>
 
