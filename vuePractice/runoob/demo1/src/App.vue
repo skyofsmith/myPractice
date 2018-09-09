@@ -2,6 +2,7 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
+    <firstcomponent></firstcomponent>
     <!-- <firstcomponent></firstcomponent>
     <secondcomponent></secondcomponent> -->
     <ul>
