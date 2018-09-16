@@ -5,5 +5,5 @@ interface RunOptions {
 
 var opts: RunOptions;
 opts.commandline = '-hello world';
-opts.commandline = ['-hello', 'world']; // OK
-opts.commandline = [42];
+opts.commandline = ['-hello', 'world'];
+// opts.commandline = [42];
