@@ -12,3 +12,11 @@ opts.commandline = ['-hello', 'world'];
 if(opts.length === 0) { // OK, string和string[]都有'length'属性
   console.log("it's empty");
 }
+
+function formatCommandline(c: string|string[]) {
+    if(typeof c === 'string') {
+        return c.trim();
+    } else {
+        return c.join(' ');
+    }
+}
