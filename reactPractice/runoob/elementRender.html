@@ -13,15 +13,22 @@
 
   <div id="example"></div>
   <script type="text/babel">
-    function tick() {
-      const element = (
+    function Clock(props) {
+      return (
         <div>
           <h1>Hello, world!</h1>
-          <h2>现在是 {new Date().toLocaleTimeString()}.</h2>
+          <h2>现在是 {props.date.toLocaleTimeString()}.</h2>
         </div>
       );
-      ReactDOM.render(element, document.getElementById('example'));
     }
+
+    function tick() {
+      ReactDOM.render(
+        <Clock date={new Date()} />,
+        document.getElementById('example')
+      );
+    }
+
     setInterval(tick, 1000);
   </script>
 </body>
