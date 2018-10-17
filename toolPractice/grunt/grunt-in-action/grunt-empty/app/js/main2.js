@@ -1,1 +1,0 @@
-doThingA('bb');
