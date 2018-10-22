@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cacheFactory</title>
+</head>
+<body ng-controller="Ctrl">
+        {{name}}
+        <br>
+
+        <hr>
+        <script src="../../bower_components/angular/angular.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            angular.module('app', [])
+            .controller('Ctrl', ['$scope', '$cacheFactory', function ($scope, $cacheFactory) {
+                $scope.name = 'zz';
+                window.$cacheFactory = $cacheFactory;
+                var zzDB = $cacheFactory('zzDB');
+                window.zdb = zzDB;
+                zzDB.put('zz1', {
+                    name: 'sam',
+                    age: 27
+                });
+                zzDB.put('zz2', {
+                    name: 'drzz',
+                    age: 3
+                });
+                var z1 = zzDB.get('zz1');
+                zzDB.remove('zz1');
+                console.log(z1);
+            }]);
+        </script>
+</body>
+</html>
