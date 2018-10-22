@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>angularjs $sec</title>
+</head>
+<body ng-controller="Ctrl">
+    <div ng-bind-html="name"></div>
+    <hr>
+    <div ng-bind-html="dt | trustHtml"></div>
+
+
+    <script src="../../bower_components/angular/angular.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        var app = angular.module('app', []);
+        app.filter('trustHtml', ['$sce', function ($sce) {
+            return function(html){
+                return $sce.trustAsHtml(html);
+            };
+        }])
+        app.controller('Ctrl', ['$scope', '$sce', function($scope, $sce){
+            window.$sce = $sce;
+            $scope.name = $sce.trustAsHtml('<a href="#/">asdasd</a>');
+            $scope.dt = '<div style="color: red;">Hello world!</div>'
+        }]);
+    </script>
+</body>
+</html>
