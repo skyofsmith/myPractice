@@ -25,4 +25,12 @@ Dart
 
   print('asd'.indexOf('s'));
   print('asdas'.lastIndexOf('a'));
+
+  print('a'.toUpperCase());
+  print('A'.toLowerCase());
+  print(' asd '.trim());
+  print(' asd '.trimLeft());
+  print(' asd '.trimRight());
+  print('a b c d e f'.split(' '));
+  print('a b c,d'.replaceAll(' ', ';'));
 }
