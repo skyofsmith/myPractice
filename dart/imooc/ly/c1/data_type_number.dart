@@ -7,6 +7,8 @@ void main() {
   // b = 11.1;
   double c = 11.1;
   c = 1;
+  print(c);
+  
   print(a + b);
   print(a - b);
   print(a * b);
