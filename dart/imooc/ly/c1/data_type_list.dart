@@ -24,5 +24,4 @@ void main(List<String> args) {
   print(list4);
   print(list4.sublist(1));
   list1.forEach(print);
-  list1.
 }
