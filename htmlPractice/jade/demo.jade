@@ -1,4 +1,8 @@
 doctype html
+<!--[if IE 8]><html class='ie8'><![endif]-->
+<!--[if IE 9]><html class='ie9'><![endif]-->
+//- 条件注释(不会显示在html中)
+<!--[if !IE]><!--><html><!--<![endif]-->
 html
   head
     meta(charset='utf-8')
@@ -9,14 +13,15 @@ html
       }
     script.
       var course = 'jade';
+      console.log(course);
   body
     h1#title.title.title1 Hello World!
-    // p this is a singleline comment
-    //- this is a block comment
+    // p this is a singleline comment;单行注释(会显示在html中)
+    //- this is a block comment;块注释(不会显示在html中)
       xxx
       qwew
       qwe
-    //-
+    //- 非缓冲注释
     section
     div(id="asd", class="hello")
     #id.class
@@ -34,3 +39,4 @@ html
       | 3.cc
       <span>22</span>
       | 4.dd
+</html>
