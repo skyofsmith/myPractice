@@ -3,10 +3,13 @@ doctype html
 <!--[if IE 9]><html class='ie9'><![endif]-->
 //- 条件注释(不会显示在html中)
 <!--[if !IE]><!--><html><!--<![endif]-->
+//- define variable;定义变量
+- var author = 'sam'
 html
   head
     meta(charset='utf-8')
-    title first jade file
+    //- use variable;使用变量
+    title first jade file of #{ author[0].toUpperCase() + author.substr(1)}
     style.
       body {
         color: orange
@@ -39,4 +42,22 @@ html
       | 3.cc
       <span>22</span>
       | 4.dd
+    - var data = 'text'
+    //- string in variable will escape;变量中的字符自动转义
+    - var html = '<script>alert(0)</script><span>script</span>'
+    p #{data}
+    p= data
+    p #{html}
+    p= html
+    //- use !{}, avoid escape;
+    p !{html}
+    p!= html
+
+    //- input # and !
+    p \#{data}
+    p \!{data}
+    //- variable not defined is undefined
+    input(value='#{definenot}')
+    //- use property=variable
+    input(value=definenot)
 </html>
