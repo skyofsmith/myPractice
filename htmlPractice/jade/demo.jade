@@ -25,19 +25,24 @@ html
       qwew
       qwe
     //- 非缓冲注释
+    //- nested tag;标签嵌套
     section
-    div(id="asd", class="hello")
-    #id.class
+      div(id="asd", class="hello")
+        #id.class
     ul
     strong
     hr
     br
+    //- properties write in (),split by ,
     a(href='www.so.com', title='so', data-uid='qwe') link
+    //- 属性写在()中，多个属性以,分隔
     input(name='course', type='text', value='qwe')
     input(name='course', type='checkbox', checked)
+    //- 多段文本
     p.
       1.aa<strong>11</strong>
       2.bb
+    //- 多段文本
     p
       | 3.cc
       <span>22</span>
