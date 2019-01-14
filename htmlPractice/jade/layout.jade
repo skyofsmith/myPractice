@@ -1,0 +1,24 @@
+doctype html
+<!--[if IE 8]><html class='ie8'><![endif]-->
+<!--[if IE 9]><html class='ie9'><![endif]-->
+//- 条件注释(不会显示在html中)
+<!--[if !IE]><!--><html><!--<![endif]-->
+//- define variable;定义变量
+- var author = 'sam'
+head
+  meta(charset='utf-8')
+  //- use variable;使用变量
+  title first jade file of #{ author[0].toUpperCase() + author.substr(1)}
+  style.
+    body {
+      color: orange
+    }
+  script.
+    var course = 'jade';
+    console.log(course);
+body
+  block desc
+    p desc from layout
+    
+  block content
+</html>
