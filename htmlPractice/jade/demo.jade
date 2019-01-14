@@ -68,4 +68,7 @@ html
 
     //- jade demo.jade --obj '{"author": "samue"}'
     //- jade demo.jade -O obj.json
+    - var imooc = { course: 'jade', level: 'high' }
+    - for (var k in imooc)
+      p= imooc[k]
 </html>
