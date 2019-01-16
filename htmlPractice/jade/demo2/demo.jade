@@ -1,7 +1,51 @@
-
+//- 
+  缺点
+    1.可移植性差
+    2.调式困难
+    3.性能不是非常出色
+  选择因素
+    初始阶段（开发效率）
+    稳定阶段（性能和协作成本）
+  
 extends layout
 
 block content
+  //- 
+    html2jade
+    1.
+      html2jade http://xxx.com > d.jade
+    2.
+      html2jade xxx.html > d.jade
+    3.
+      var html2jade = require('html2jade')
+      html2jade.convertDocument(document, {}, functin(err, jade) {
+
+      })
+
+  #runtime
+  script(src='node_modules/jade/runtime.js')
+  script(src='runtime.js')
+  script.
+    var runtimeNode = document.getElementById('runtime')
+    var runtimeHtml = template({
+      isRuntime: true
+    })
+
+  //- markdown
+  :markdown
+    Hi, this is **imooc** [link](http://imooc.com)
+  //- less
+  style
+    :less
+      body {
+        p {
+          color: #ccc;
+        }
+      }
+  //- coffee
+  script
+    :coffee
+      console.log 'this is coffee'
   include style
     style.
       h2 {
