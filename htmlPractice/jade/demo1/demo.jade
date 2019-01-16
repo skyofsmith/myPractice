@@ -2,6 +2,12 @@
 extends layout
 
 block content
+  include style
+    style.
+      h2 {
+        color: #f0f;
+      }
+  include title.html
   h1#title.title.title1 Hello World!
   // p this is a singleline comment;单行注释(会显示在html中)
   //- this is a block comment;块注释(不会显示在html中)

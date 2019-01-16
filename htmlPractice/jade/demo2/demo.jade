@@ -1,0 +1,157 @@
+
+extends layout
+
+block content
+  include style
+    style.
+      h2 {
+        color: #f0f;
+      }
+  include title.html
+  h1#title.title.title1 Hello World!
+  // p this is a singleline comment;单行注释(会显示在html中)
+  //- this is a block comment;块注释(不会显示在html中)
+    xxx
+    qwew
+    qwe
+  //- 非缓冲注释
+  //- nested tag;标签嵌套
+  section
+    div(id="asd", class="hello")
+      #id.class
+  ul
+  strong
+  hr
+  br
+  //- properties write in (),split by ,
+  a(href='www.so.com', title='so', data-uid='qwe') link
+  //- 属性写在()中，多个属性以,分隔
+  input(name='course', type='text', value='qwe')
+  input(name='course', type='checkbox', checked)
+  //- 多段文本
+  p.
+    1.aa<strong>11</strong>
+    2.bb
+  //- 多段文本
+  p
+    | 3.cc
+    <span>22</span>
+    | 4.dd
+  - var data = 'text'
+  //- string in variable will escape;变量中的字符自动转义
+  - var html = '<script>console.log(0)</script><span>script</span>'
+  p #{data}
+  p= data
+  p #{html}
+  p= html
+  //- use !{}, avoid escape;
+  p !{html}
+  p!= html
+
+  //- input # and !
+  p \#{data}
+  p \!{data}
+  //- variable not defined is undefined
+  input(value='#{definenot}')
+  //- use property=variable
+  input(value=definenot)
+
+  //- jade demo.jade --obj '{"author": "samue"}'
+  //- jade demo.jade -O obj.json
+  - var imooc = { course: 'jade', level: 'high' }
+  //- iterate the object by for (var .. in ....)
+  - for (var k in imooc)
+    p= imooc[k]
+  //- iterate the object by each(the '-' before each was unnessary)
+  - each value, key in imooc
+    p #{key}: #{value}
+  each value, key in imooc
+    p #{key}: #{value}
+  - var list = ['node', 'jade', 'express']
+  //- iterate the list
+  each i in list
+    p= i
+  - var sections = [{id:1, items: ['a', 'b']}, {id:2, items: ['c', 'd']}, ]
+  //- nested iterate
+  dl
+    each section in sections.length > 0 ? sections : [{id: 0, items: ['none']}]
+      dt= section.id
+      each item in section.items
+        dd= item
+  - var n = 0
+  //- while
+  ul
+    while n < 4
+      li= n++
+  //- if else
+  - var isImooc = true
+  - var lessons = ['jade', 'node']
+  if lessons
+    if lessons.length > 2
+      p more than 2: #{lessons.join(', ')}
+    else if lessons.length > 1
+      p less than 2: #{lessons.join(' , ')}
+    else
+      p no lesson
+  else
+    p no lesson
+  //- unless
+  unless !isImooc
+    p #{lessons.length}
+  //- case
+  - var name = 'jade'
+  case name
+    when 'java'
+    when 'node'
+      p Hi node
+    when 'jade': p Hi jade!
+    when 'express': p Hi express
+    default
+      p hi #{name}
+
+  //- mixin
+  mixin lessonIs
+    p imooc jade study
+  +lessonIs
+  +lessonIs
+  mixin study(name, courses)
+    p #{name}
+    ul.courses
+      each c in courses
+        li= c
+
+  +study('sam', ['jade', 'node'])
+  mixin group(student)
+    h4 #{student.name} studing
+    +study(student.name, student.courses)
+
+  +group({name: 'zz', courses: ['jade', 'node', 'express']})
+
+  mixin team(slogon)
+    h4 #{slogon}
+    if block
+      block
+    else
+      p no team
+  +team('slogon')
+    p Good job!!!
+
+  mixin attr(name)
+    p(class!=attributes.class) #{name}
+  +attr('attr')(class='magic')
+  mixin attrs(name)
+    p&attributes(attributes) #{name}
+  +attrs('attrs')(class='magic2', id='attrid')
+  mixin magic(name, ...items)
+    ul(class='#{name}')
+      each item in items
+        li= item
+  +magic('magic', 'node', 'jade', '..')
+
+  //- template extend
+  block desc
+    p desc from index
+  hr
+  block desc
+  span ----
+  

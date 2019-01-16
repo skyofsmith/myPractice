@@ -6,16 +6,7 @@ doctype html
 //- define variable;定义变量
 - var author = 'sam'
 head
-  meta(charset='utf-8')
-  //- use variable;使用变量
-  title first jade file of #{ author[0].toUpperCase() + author.substr(1)}
-  style.
-    body {
-      color: orange
-    }
-  script.
-    var course = 'jade';
-    console.log(course);
+  include head
 body
   block desc
     p desc from layout
