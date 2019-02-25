@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mediaquery</title>
+  <style>
+    .box {
+      width: 100%;
+      height: 100px;
+      background-color: red;
+    }
+
+    .inner:nth-child(2n+1) {
+      background-color: red;
+    }
+    .inner:nth-child(2n) {
+      background-color: blue;
+    }
+
+
+    @media screen and (max-width: 320px) {
+      .inner {
+        width: 25%;
+        height: 100px;
+        float: left;
+      }
+    }
+    @media screen and (min-width: 321px) {
+      .inner {
+        width: 100%;
+        height: 100px;
+      }
+    }
+  </style>
+  <!--<link rel="stylesheet" href="" media="screen and (max-width: 320px)">-->
+</head>
+<body>
+<div class="box">
+  <div class="inner"></div>
+  <div class="inner"></div>
+  <div class="inner"></div>
+  <div class="inner"></div>
+</div>
+</body>
+</html>
