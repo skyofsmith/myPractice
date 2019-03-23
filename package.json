@@ -1,5 +1,5 @@
 {
-  "name": "myPractice",
+  "name": "mypractice",
   "version": "1.0.0",
   "description": "<hr>",
   "main": "index.js",
@@ -12,6 +12,7 @@
     "element-ui": "^2.4.6",
     "knockout": "^3.4.2",
     "requirejs": "^2.3.6",
+    "stylus": "^0.54.5",
     "typescript": "^3.0.3",
     "vue": "^2.5.17",
     "vue-cli-plugin-apollo": "^0.15.0",
