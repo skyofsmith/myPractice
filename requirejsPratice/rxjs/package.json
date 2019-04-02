@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "babel-core": "^5.8.38",
     "rxjs": "^6.4.0"
   }
 }
