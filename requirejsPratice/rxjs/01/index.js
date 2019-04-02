@@ -5,6 +5,7 @@ console.log(rxjs)
 const { fromEvent } = rxjs
 
 rxjs.of(1, 2, 3)
+Rx.Observable.of(1,2,3)
 
 console.log(Rx);
 
