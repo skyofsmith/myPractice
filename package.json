@@ -15,10 +15,11 @@
     "stylus": "^0.54.5",
     "typescript": "^3.0.3",
     "vue": "^2.5.17",
-    "vue-cli-plugin-apollo": "^0.15.0",
+    "vue-cli-plugin-apollo": "^0.15.0"
+  },
+  "devDependencies": {
     "webpack": "^3.12.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
