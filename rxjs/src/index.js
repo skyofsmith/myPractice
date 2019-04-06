@@ -1,11 +1,13 @@
-import Rx from 'rxjs/Rx'
+import * as rxjs from 'rxjs'
+import { Observable, fromEvent } from 'rxjs'
 
-console.log(Rx)
+console.log(rxjs)
 
 var btn1 = document.getElementById('btn1')
-btn1.addEventListener('click', function () {
+btn1.addEventListener('click', function() {
   console.log('Clicked!')
 })
 
 var btn2 = document.getElementById('btn2')
-Rx.Observable.fromEvent(btn2, 'click').subscribe(() => console.log('Clicked!'))
+fromEvent(btn2, 'click')
+  .subscribe(() => console.log('Clicked!'))
