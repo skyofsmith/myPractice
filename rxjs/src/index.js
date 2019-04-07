@@ -1,6 +1,6 @@
 import * as rxjs from 'rxjs'
-import { Observable, fromEvent } from 'rxjs'
-import { scan } from 'rxjs/operators'
+import { fromEvent } from 'rxjs'
+import { throttleTime, scan } from 'rxjs/operators'
 
 console.log(rxjs)
 
@@ -37,6 +37,8 @@ btn5.addEventListener('click', () => {
 
 var btn6 = document.getElementById('btn6')
 fromEvent(btn6, 'click')
-  .throttleTime(1000)
-  .scan(count => count + 1, 0)
+  .pipe(
+    throttleTime(1000),
+    scan(count => count + 1, 0)
+  )
   .subscribe(count => console.log(`Clicked ${count} times`))
