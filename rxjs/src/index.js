@@ -1,6 +1,6 @@
 import * as rxjs from 'rxjs'
 import { fromEvent } from 'rxjs'
-import { throttleTime, scan } from 'rxjs/operators'
+import { throttleTime, map, scan } from 'rxjs/operators'
 
 console.log(rxjs)
 
@@ -42,3 +42,25 @@ fromEvent(btn6, 'click')
     scan(count => count + 1, 0)
   )
   .subscribe(count => console.log(`Clicked ${count} times`))
+
+// Values
+
+let count7 = 0
+const rate7 = 1000
+let lastClick7 = Date.now() - rate7
+const btn7 = document.getElementById('btn7')
+btn7.addEventListener('click', event => {
+  if (Date.now() - lastClick >= rate7) {
+    count7 += event.clientX
+    console.log(count7)
+    lastClick = Date.now()
+  }
+})
+
+const btn8 = document.getElementById('btn8');
+fromEvent(btn8, 'click').pipe(
+  throttleTime(1000),
+  map(event => event.clientX),
+  scan((count, clientX) => count + clientX, 0)
+)
+.subscribe(count => console.log(count));
