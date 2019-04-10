@@ -14,6 +14,8 @@ html, body {
 
 #nav {
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   .nav-menu {
     height: 100%;
@@ -28,76 +30,80 @@ html, body {
     }
   }
 }
+
+.view {
+  background-color: #f0f;
+}
 </style>
 <template>
-  <el-container id="app">
-    <el-aside id="nav" width="200px">
-      <!-- <router-link to="/about">About</router-link> -->
-      <el-menu default-active="1" class="nav-menu">
-        <el-submenu index="1">
-          <span slot="title">OVERVIEW</span>
-          <el-menu-item index="1-1">
-            <router-link to="/">Observables</router-link>
+  <div id="app">
+    <el-container>
+      <el-aside id="nav" width="200px">
+        <el-menu default-active="1" class="nav-menu">
+          <el-submenu index="1">
+            <span slot="title">OVERVIEW</span>
+            <el-menu-item index="1-1">
+              <router-link to="/overview/observable">Observables</router-link>
+            </el-menu-item>
+            <el-menu-item index="1-2">
+              <router-link to="/">Subscription</router-link>
+            </el-menu-item>
+            <el-menu-item index="1-3">
+              <router-link to="/">Subjects</router-link>
+            </el-menu-item>
+            <el-menu-item index="1-4">
+              <router-link to="/">Scheduler</router-link>
+            </el-menu-item>
+            <el-submenu index="1-5">
+              <span slot="title">Testing</span>
+              <el-menu-item index="1-5-1">
+                <router-link to="/">Marble Testing</router-link>
+              </el-menu-item>
+            </el-submenu>
+          </el-submenu>
+          <el-menu-item index="2">
+            <span slot="title">
+              <router-link to="/installation">INSTALLATION</router-link>
+            </span>
           </el-menu-item>
-          <el-menu-item index="1-2">
-            <router-link to="/">Subscription</router-link>
-          </el-menu-item>
-          <el-menu-item index="1-3">
-            <router-link to="/">Subjects</router-link>
-          </el-menu-item>
-          <el-menu-item index="1-4">
-            <router-link to="/">Scheduler</router-link>
-          </el-menu-item>
-          <el-submenu index="1-5">
-            <span slot="title">Testing</span>
-            <el-menu-item index="1-5-1">
-              <router-link to="/">Marble Testing</router-link>
+          <el-submenu index="3">
+            <span slot="title">REFERENCE</span>
+            <el-menu-item index="3-1">
+              <router-link to="/">API</router-link>
+            </el-menu-item>
+            <el-menu-item index="3-2">
+              <router-link to="/">Operator Decision Tree</router-link>
             </el-menu-item>
           </el-submenu>
-        </el-submenu>
-        <el-menu-item index="2">
-          <span slot="title">
-            <router-link to="/">INSTALLATION</router-link>
-          </span>
-        </el-menu-item>
-        <el-submenu index="3">
-          <span slot="title">REFERENCE</span>
-          <el-menu-item index="3-1">
-            <router-link to="/">API</router-link>
-          </el-menu-item>
-          <el-menu-item index="3-2">
-            <router-link to="/">Operator Decision Tree</router-link>
-          </el-menu-item>
-        </el-submenu>
-        <el-submenu index="4">
-          <span slot="title">ABOUT VERSION 6</span>
-          <el-menu-item index="4-1">
-            <router-link to="/">Migration</router-link>
-          </el-menu-item>
-          <el-menu-item index="4-2">
-            <router-link to="/">Pipeable Operators</router-link>
-          </el-menu-item>
-          <el-menu-item index="4-3">
-            <router-link to="/">Deprecations</router-link>
-          </el-menu-item>
-        </el-submenu>
-        <el-submenu index="5">
-          <span slot="title">
-            <router-link to="/">EXTERNAL RESOURCES</router-link>
-          </span>
-        </el-submenu>
-        <el-submenu index="6">
-          <span slot="title">
-            <router-link to="/">CODE OF CONDUCT</router-link>
-          </span>
-        </el-submenu>
-      </el-menu>
-    </el-aside>
-    <el-container>
-      <router-view class />
+          <el-submenu index="4">
+            <span slot="title">ABOUT VERSION 6</span>
+            <el-menu-item index="4-1">
+              <router-link to="/">Migration</router-link>
+            </el-menu-item>
+            <el-menu-item index="4-2">
+              <router-link to="/">Pipeable Operators</router-link>
+            </el-menu-item>
+            <el-menu-item index="4-3">
+              <router-link to="/">Deprecations</router-link>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="5">
+            <span slot="title">
+              <router-link to="/">EXTERNAL RESOURCES</router-link>
+            </span>
+          </el-submenu>
+          <el-submenu index="6">
+            <span slot="title">
+              <router-link to="/">CODE OF CONDUCT</router-link>
+            </span>
+          </el-submenu>
+        </el-menu>
+      </el-aside>
+      <el-main>
+        123
+      </el-main>
     </el-container>
-    <!-- <el-main>
-      <router-view class />
-    </el-main>-->
-  </el-container>
+
+    <router-view class="view"></router-view>
+  </div>
 </template>
