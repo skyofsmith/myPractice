@@ -17,7 +17,13 @@ export default new Router({
         {
           path: "observable",
           name: "Observable",
-          component: () => import("./views/overview/Overview.vue")
+          component: () => import("./views/overview/components/Observable.vue")
+        },
+        {
+          path: "subscription",
+          name: "Subscription",
+          component: () =>
+            import("./views/overview/components/Subscription.vue")
         }
       ]
     },

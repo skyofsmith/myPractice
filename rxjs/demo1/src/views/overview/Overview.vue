@@ -1,8 +1,12 @@
 <template>
-  <div class="overview">
-    Overview
-    <!-- <router-view></router-view> -->
-  </div>
+  <el-container class="overview">
+    <el-header>
+      <h1>Overview</h1>
+    </el-header>
+    <el-main>
+      <router-view></router-view>
+    </el-main>
+  </el-container>
 </template>
 
 <script>

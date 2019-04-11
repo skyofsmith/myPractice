@@ -41,30 +41,28 @@ html, body {
       <el-menu default-active="1" class="nav-menu">
         <el-submenu index="1">
           <span slot="title">OVERVIEW</span>
-          <el-menu-item index="1-1">
-            <router-link to="/overview/observable">Observables</router-link>
-          </el-menu-item>
-          <el-menu-item index="1-2">
-            <router-link to="/">Subscription</router-link>
-          </el-menu-item>
-          <el-menu-item index="1-3">
-            <router-link to="/">Subjects</router-link>
-          </el-menu-item>
-          <el-menu-item index="1-4">
-            <router-link to="/">Scheduler</router-link>
-          </el-menu-item>
+          <router-link to="/overview/observable">
+            <el-menu-item index="1-1">Observables</el-menu-item>
+          </router-link>
+          <router-link to="/overview/subscription">
+            <el-menu-item index="1-2">Subscription</el-menu-item>
+          </router-link>
+          <router-link to="/">
+            <el-menu-item index="1-3">Subjects</el-menu-item>
+          </router-link>
+          <router-link to="/">
+            <el-menu-item index="1-4">Scheduler</el-menu-item>
+          </router-link>
           <el-submenu index="1-5">
             <span slot="title">Testing</span>
-            <el-menu-item index="1-5-1">
-              <router-link to="/">Marble Testing</router-link>
-            </el-menu-item>
+            <router-link to="/">
+              <el-menu-item index="1-5-1">Marble Testing</el-menu-item>
+            </router-link>
           </el-submenu>
         </el-submenu>
-        <el-menu-item index="2">
-          <span slot="title">
-            <router-link to="/installation">INSTALLATION</router-link>
-          </span>
-        </el-menu-item>
+        <router-link to="/installation">
+          <el-menu-item index="2">INSTALLATION</el-menu-item>
+        </router-link>
         <el-submenu index="3">
           <span slot="title">REFERENCE</span>
           <el-menu-item index="3-1">
@@ -98,8 +96,8 @@ html, body {
         </el-submenu>
       </el-menu>
     </el-aside>
-    <el-container>
+    <el-main>
       <router-view class="view"></router-view>
-    </el-container>
+    </el-main>
   </el-container>
 </template>
