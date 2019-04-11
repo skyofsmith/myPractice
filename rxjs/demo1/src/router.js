@@ -12,21 +12,19 @@ export default new Router({
     {
       path: "/overview",
       name: "Overview",
-      component: import(/* webpackChunkName: "overview" */ "./views/overview/Overview.vue"),
+      component: () => import("./views/overview/Overview.vue"),
       children: [
         {
           path: "observable",
           name: "Observable",
-          component: import(/* webpackChunkName: "overview" */ "./views/overview/Overview.vue")
+          component: () => import("./views/overview/Overview.vue")
         }
       ]
     },
     {
-      path: "installation",
+      path: "/installation",
       name: "Installation",
-      // component: () => import("./views/installation/Installation.vue")
-      component: resolve =>
-        require(["./views/installation/Installation.vue"], resolve)
+      component: () => import("./views/installation/Installation.vue")
     }
   ]
 });
