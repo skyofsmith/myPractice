@@ -24,6 +24,11 @@ export default new Router({
           name: "Subscription",
           component: () =>
             import("./views/overview/components/Subscription.vue")
+        },
+        {
+          path: "subject",
+          name: "Subject",
+          component: () => import("./views/overview/components/Subject.vue")
         }
       ]
     },

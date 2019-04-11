@@ -47,7 +47,7 @@ html, body {
           <router-link to="/overview/subscription">
             <el-menu-item index="1-2">Subscription</el-menu-item>
           </router-link>
-          <router-link to="/">
+          <router-link to="/overview/subject">
             <el-menu-item index="1-3">Subjects</el-menu-item>
           </router-link>
           <router-link to="/">
