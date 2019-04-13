@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { Subject, from } from "rxjs";
+import { Subject, from, interval } from "rxjs";
 import { multicast } from "rxjs/operators";
 export default {
   name: "Subject",
@@ -51,7 +51,6 @@ export default {
       const subject = new Subject();
       const multicasted = source.pipe(multicast(subject));
 
-      // These are, under the hood, `subject.subscribe({...})`:
       multicasted.subscribe({
         next: v => console.log(`observerA: ${v}`)
       });
@@ -59,10 +58,37 @@ export default {
         next: v => console.log(`observerB: ${v}`)
       });
 
-      // This is, under the hood, `source.subscribe(subject)`:
       multicasted.connect();
     }
     console.log("---Multicasted Observables---");
+    console.log("---Reference counting---");
+    {
+      const source = interval(500);
+      const subject = new Subject();
+      const multicasted = source.pipe(multicast(subject));
+      let subscription1, subscription2, subscriptionConnect;
+
+      subscription1 = multicasted.subscribe({
+        next: v => console.log(`observerA: ${v}`)
+      });
+      subscriptionConnect = multicasted.connect();
+
+      setTimeout(() => {
+        subscription2 = multicasted.subscribe({
+          next: v => console.log(`observerB: ${v}`)
+        });
+      }, 600);
+
+      setTimeout(() => {
+        subscription1.unsubscribe();
+      }, 1200);
+
+      setTimeout(() => {
+        subscription2.unsubscribe();
+        subscriptionConnect.unsubscribe();
+      }, 2000);
+    }
+    console.log("---Reference counting---");
   }
 };
 </script>

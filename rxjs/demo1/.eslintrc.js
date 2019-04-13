@@ -10,9 +10,9 @@ module.exports = {
   },
   overrides: [
     {
-      'files': ['*.vue'],
-      'rules': {
-        'indent': 'off'
+      files: ["*.vue"],
+      rules: {
+        indent: "off"
       }
     }
   ],
