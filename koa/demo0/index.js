@@ -19,9 +19,14 @@ app.use(async (ctx, next) => {
   ctx.set('X-Response-Time', `${ms}ms`);
 });
 
+// keys ?
+app.keys = ['im a newer secret', 'i like turtle'];
+app.keys = new KeyGrip(['im a newer secret', 'i like turtle'], 'sha256');
+
 // response
 
 app.use(async ctx => {
+  ctx.cookies.set('name', 'zz', { signed: true });
   ctx.body = 'hello world'
 })
 
