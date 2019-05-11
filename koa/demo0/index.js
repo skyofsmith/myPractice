@@ -32,8 +32,8 @@ app.use(async ctx => {
 
 console.log('app.env is', app.env);
 
-app.on('error', err => {
-  log.error('server error', err)
+app.on('error', (err, ctx) => {
+  log.error('server error', err, ctx)
 });
 
 app.listen(3000)
