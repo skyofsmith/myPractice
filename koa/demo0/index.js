@@ -32,6 +32,10 @@ app.use(async ctx => {
 
 console.log('app.env is', app.env);
 
+app.on('error', err => {
+  log.error('server error', err)
+});
+
 app.listen(3000)
 // up = down
 // require('http').createServer(app.callback()).listen(3000)
