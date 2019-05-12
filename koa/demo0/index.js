@@ -21,7 +21,7 @@ app.use(async (ctx, next) => {
 
 // keys ?
 app.keys = ['im a newer secret', 'i like turtle'];
-app.keys = new KeyGrip(['im a newer secret', 'i like turtle'], 'sha256');
+// app.keys = new KeyGrip(['im a newer secret', 'i like turtle'], 'sha256');
 
 // response
 
@@ -39,6 +39,8 @@ app.on('error', (err, ctx) => {
   log.error('server error', err, ctx)
 });
 
-app.listen(3000)
+app.listen(3000, () => {
+  console.log('app start up on http://localhost:3000/')
+})
 // up = down
 // require('http').createServer(app.callback()).listen(3000)
