@@ -26,6 +26,9 @@ app.keys = new KeyGrip(['im a newer secret', 'i like turtle'], 'sha256');
 // response
 
 app.use(async ctx => {
+  console.log('this is the koa context: ', ctx);
+  console.log('this is the koa request: ', ctx.request); // 这是 koa Request
+  console.log('this is the koa request: ', ctx.response); // 这是 koa Response
   ctx.cookies.set('name', 'zz', { signed: true });
   ctx.body = 'hello world'
 })
