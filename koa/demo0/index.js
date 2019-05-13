@@ -28,7 +28,9 @@ app.keys = ['im a newer secret', 'i like turtle'];
 app.use(async ctx => {
   console.log('this is the koa context: ', ctx);
   console.log('this is the koa request: ', ctx.request); // 这是 koa Request
-  console.log('this is the koa request: ', ctx.response); // 这是 koa Response
+  console.log('this is the koa response: ', ctx.response); // 这是 koa Response
+  console.log('this is the Node request: ', ctx.req); // 这是 Node Response
+  console.log('this is the Node request: ', ctx.res); // 这是 Node Response
   ctx.cookies.set('name', 'zz', { signed: true });
   ctx.body = 'hello world'
 })
