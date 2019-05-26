@@ -39,6 +39,38 @@ class Spacecraft {
   }
 }
 
+// Inheritance
+class Orbiter extends Spacecraft {
+  num altitude;
+  Orbiter(String name, DateTime launchDate, this.altitude)
+      : super(name, launchDate);
+}
+
+// Mixins
+class Piloted {
+  int astronauts = 1;
+  void describeCrew() {
+    print('Number of astronauts: $astronauts');
+  }
+}
+class PilotedCraft extends Spacecraft with Piloted {
+
+}
+
+// Interfaces and abstract classes
+class MockSpaceship implements Spacecraft {
+  // ···
+}
+abstract class Describable {
+  void describe();
+
+  void describeWithEmphasis() {
+    print('=========');
+    describe();
+    print('=========');
+  }
+}
+
 void main() {
   // main function
   print('Hello, World!');
@@ -102,4 +134,58 @@ void main() {
 
   var voyager3 = Spacecraft.unlaunched('Voyager III');
   voyager3.describe();
+
+  // Async
+  const oneSecond = Duration(seconds: 1);
+  // ···
+  Future<void> printWithDelay(String message) async {
+    await Future.delayed(oneSecond);
+    print(message);
+  }
+  Future<void> printWithDelay(String message) {
+    return Future.delayed(oneSecond).then((_) {
+      print(message);
+    });
+  }
+
+  Future<void> createDescriptions(Iterable<String> objects) async {
+    for (var object in objects) {
+      try {
+        var file = File('$object.txt');
+        if (await file.exists()) {
+          var modified = await file.lastModified();
+          print(
+              'File for $object already exists. It was modified on $modified.');
+          continue;
+        }
+        await file.create();
+        await file.writeAsString('Start describing $object in this file.');
+      } on IOException catch (e) {
+        print('Cannot create description for $object: $e');
+      }
+    }
+  }
+
+  Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
+    for (var object in objects) {
+      await Future.delayed(oneSecond);
+      yield '${craft.name} flies by $object';
+    }
+  }
+
+  if (astronauts == 0) {
+    throw StateError('No astronauts.');
+  }
+
+  try {
+    for (var object in flybyObjects) {
+      var description = await File('$object.txt').readAsString();
+      print(description);
+    }
+  } on IOException catch (e) {
+    print('Could not describe object: $e');
+  } finally {
+    flybyObjects.clear();
+  }
+
 }
