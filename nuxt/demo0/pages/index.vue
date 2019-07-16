@@ -24,11 +24,25 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      list: []
+    }
+  },
+  mounted() {
+    window.console.log(axios)
+    const self = this
+    axios.post('info').then(res => {
+      window.console.log(res)
+      self.list = res
+    })
   }
 }
 </script>

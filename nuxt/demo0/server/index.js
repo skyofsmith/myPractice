@@ -23,6 +23,14 @@ async function start() {
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
+  app.post('/info', (req, res) => {
+    res.json([
+      { id: 0, title: 'message0' },
+      { id: 1, title: 'message1' },
+      { id: 2, title: 'message2' },
+      { id: 3, title: 'message3' }
+    ])
+  })
 
   // Listen the server
   app.listen(port, host)
@@ -31,4 +39,5 @@ async function start() {
     badge: true
   })
 }
+
 start()
