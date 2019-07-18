@@ -21,6 +21,10 @@ async function start() {
     await nuxt.ready()
   }
 
+  app.post('/p', function(req, res) {
+    res.json([{ title: 'a' }, { title: 'b' }, { title: 'c' }])
+  })
+
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
@@ -31,4 +35,5 @@ async function start() {
     badge: true
   })
 }
+
 start()

@@ -6,12 +6,22 @@
 
 <template>
   <div class="infos">
-    infos
+    <ul>
+      <li v-for="(l, i) in list" :key="i">{{ l.title }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'Info'
+  name: 'Info',
+  async asyncData() {
+    const list = await axios.post('/p').then(res => res.data)
+    return {
+      list
+    }
+  }
 }
 </script>
