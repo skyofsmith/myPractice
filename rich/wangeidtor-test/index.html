@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>rich text</title>
+  <link rel="stylesheet" href="./node_modules/wangeditor/release/wangEditor.css">
+</head>
+<body>
+<div id="editor">
+  <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+</div>
+<script src="./node_modules/wangeditor/release/wangEditor.js"></script>
+<script>
+  var E = window.wangEditor
+  var editor = new E('#editor')
+  editor.create()
+</script>
+</body>
+</html>
