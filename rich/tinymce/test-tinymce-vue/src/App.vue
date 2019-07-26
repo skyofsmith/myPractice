@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <tinymce-editor api-key="API_KEY" :init="{plugins: 'wordcount'}" v-model="content"></tinymce-editor>
+<!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
+    <tinymce-editor api-key="cubj8fxktog6r6e8f2gljp1ytaqrn3gf4fhjewqx6g3rgtbl" :init="{plugins: 'wordcount'}" v-model="content"></tinymce-editor>
   </div>
 </template>
 
