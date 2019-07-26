@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>rect</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    #editor {
+      height: 100%;
+      display: flex;
+    }
+    .form {
+      width: 300px;
+      flex-shrink: 0;
+      border-right: 5px solid brown;
+    }
+    .svg {
+      flex: 1;
+      height: 100%;
+      box-shadow: 0 0 10px black;
+    }
+  </style>
+</head>
+<body>
+  <div id="editor">
+    
+  <div class="form">
+    <div class="title">创建</div>
+    <div class="content">
+      <button>Rect</button>
+      <button>Circle</button>
+      <button>Ellipse</button>
+      <button>Line</button>
+    </div>
+    <div class="title">创建</div>
+    <div class="content">
+      <button>Rect</button>
+      <button>Circle</button>
+      <button>Ellipse</button>
+      <button>Line</button>
+    </div>
+  </div>
+  <div class="svg">
+  </svg>
+</div>
+<script>
+var SVG_NS = 'http://www.w3.org/2000/svg';
+
+var 
+</script>
+</body>
+</html>
+<!--
+  document.createElementNS(ns, tagName) 创建图形
+  element.appendChild(childElement)     添加图形
+
+  element.setAttribute(name, value)     设置属性
+  element.getAttribute(name)            获取属性
+-->
