@@ -25,7 +25,7 @@
   </style>
 </head>
 <body>
-  <div id="editor">
+<div id="editor">
     
   <div class="form">
     <div class="title">创建</div>
@@ -43,13 +43,40 @@
       <button>Line</button>
     </div>
   </div>
-  <div class="svg">
-  </svg>
+  <div id="canvas">
+  </div>
 </div>
 <script>
 var SVG_NS = 'http://www.w3.org/2000/svg';
 
-var 
+var shapeInfo = {
+  rect: 'x:10,y:10,width:200,height:100,rx:0,ry:0',
+  circle: 'cx:200,cy:200,r50',
+  ellipse: 'cx:200,cy:200,rx:80,ry:30',
+  line: 'x1:10,y1:10,x2:100,y2:100'
+};
+
+var defaultAttrs = {
+  fill: '#ffffff',
+  stroke: '#ff0000'
+};
+// var createForm = 
+var svg = createSVG();
+var selected = null;
+svg.addEventListener('click', function (e) {
+    if(e.target.tagName.toLowerCase() in shapeInfo) {
+      select(e.target)
+    }
+  })
+
+
+function createSVG() {
+  var svg = document.createElementNS(SVG_NS, 'svg');
+  svg.setAttribute('width', '100%');
+  svg.setAttribute('height', '100%');
+  canvas.appendChild(svg);
+  return svg;
+}
 </script>
 </body>
 </html>
