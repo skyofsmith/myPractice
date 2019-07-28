@@ -77,6 +77,28 @@ function createSVG() {
   canvas.appendChild(svg);
   return svg;
 }
+function select(shape) {
+  var attrs = shapeInfo[shape.tagName].split(',');
+  var attr, name, value;
+
+  attrForm.innerHTML = '';
+  while (attrs.length) {
+    attr = attrs.shift().split(':');
+    name = attr[0];
+    value = shape.getAttribute(name) || attr[1];
+    createHandle(shape, name, value);
+    shape.setAttribute(name, value);
+  }
+
+  for (name in defaultAttrs) {
+    if (defaultAttrs.hasOwnPropertyname)) {
+      value = shape.getAttribute(name) || defaultAttrs[name];
+      shape.setAttribute(name, value);
+      
+      
+    }
+  }
+}
 </script>
 </body>
 </html>
