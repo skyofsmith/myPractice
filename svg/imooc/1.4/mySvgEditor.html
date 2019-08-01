@@ -22,6 +22,19 @@
       height: 100%;
       box-shadow: 0 0 10px black;
     }
+
+    .title {
+      padding-left: 10px;
+      height: 36px;
+      line-height: 36px;
+      background-color: #eeeeee;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .content {
+      padding: 20px 10px;
+    }
   </style>
 </head>
 <body>
@@ -35,13 +48,9 @@
       <button onclick="createShape('line')">Line</button>
     </div>
     <div class="title">形状</div>
-    <div class="content">
-      <button>Rect</button>
-      <button>Circle</button>
-      <button>Ellipse</button>
-      <button>Line</button>
-    </div>
+    <div class="content"></div>
     <div class="title">外观和变换</div>
+    <div class="content"></div>
   </div>
   <div id="canvas">
   </div>
