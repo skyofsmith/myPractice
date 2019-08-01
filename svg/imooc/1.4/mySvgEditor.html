@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>rect</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    #editor {
+      height: 100%;
+      display: flex;
+    }
+    .form {
+      width: 300px;
+      flex-shrink: 0;
+      border-right: 5px solid brown;
+    }
+    .svg {
+      flex: 1;
+      height: 100%;
+      box-shadow: 0 0 10px black;
+    }
+  </style>
+</head>
+<body>
+<div id="editor">
+  <div class="form">
+    <div class="title">创建</div>
+    <div class="content">
+      <button onclick="createShape('rect')">Rect</button>
+      <button onclick="createShape('circle')">Circle</button>
+      <button onclick="createShape('ellipse')">Ellipse</button>
+      <button onclick="createShape('line')">Line</button>
+    </div>
+    <div class="title">形状</div>
+    <div class="content">
+      <button>Rect</button>
+      <button>Circle</button>
+      <button>Ellipse</button>
+      <button>Line</button>
+    </div>
+    <div class="title">外观和变换</div>
+  </div>
+  <div id="canvas">
+  </div>
+</div>
+<script>
+var SVG_NS = 'http://www.w3.org/2000/svg';
+
+var shapeInfo = {
+  rect: 'x:10,y:10,width:200,height:100,rx:0,ry:0',
+  circle: 'cx:200,cy:200,r50',
+  ellipse: 'cx:200,cy:200,rx:80,ry:30',
+  line: 'x1:10,y1:10,x2:100,y2:100'
+};
+
+var defaultAttrs = {
+  fill: '#ffffff',
+  stroke: '#ff0000'
+};
+// var createForm = 
+var svg = createSVG();
+var selected = null;
+svg.addEventListener('click', function (e) {
+    if(e.target.tagName.toLowerCase() in shapeInfo) {
+      select(e.target)
+    }
+  })
+
+
+function createSVG() {
+  var svg = document.createElementNS(SVG_NS, 'svg');
+  svg.setAttribute('width', '100%');
+  svg.setAttribute('height', '100%');
+  canvas.appendChild(svg);
+  return svg;
+}
+function select(shape) {
+  var attrs = shapeInfo[shape.tagName].split(',');
+  var attr, name, value;
+
+  attrForm.innerHTML = '';
+  while (attrs.length) {
+    attr = attrs.shift().split(':');
+    name = attr[0];
+    value = shape.getAttribute(name) || attr[1];
+    createHandle(shape, name, value);
+    shape.setAttribute(name, value);
+  }
+
+  for (name in defaultAttrs) {
+    if (defaultAttrs.hasOwnPropertyname) {
+      value = shape.getAttribute(name) || defaultAttrs[name];
+      shape.setAttribute(name, value);
+
+      
+    }
+  }
+}
+</script>
+</body>
+</html>
+<!--
+  document.createElementNS(ns, tagName) 创建图形
+  element.appendChild(childElement)     添加图形
+
+  element.setAttribute(name, value)     设置属性
+  element.getAttribute(name)            获取属性
+-->
