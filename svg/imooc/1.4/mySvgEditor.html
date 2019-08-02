@@ -73,13 +73,16 @@ var defaultAttrs = {
 var svg = createSVG();
 var selected = null;
 svg.addEventListener('click', function (e) {
-    if(e.target.tagName.toLowerCase() in shapeInfo) {
-      select(e.target)
-    }
-  })
+  if(e.target.tagName.toLowerCase() in shapeInfo) {
+    select(e.target)
+  }
+})
 
+function createShape(shape) {
+  createSVG(shape)
+}
 
-function createSVG() {
+function createSVG(shape) {
   var svg = document.createElementNS(SVG_NS, 'svg');
   svg.setAttribute('width', '100%');
   svg.setAttribute('height', '100%');
