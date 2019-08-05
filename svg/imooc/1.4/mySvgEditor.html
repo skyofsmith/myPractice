@@ -60,7 +60,7 @@
 
       var shapeInfo = {
         rect: 'x:10,y:10,width:200,height:100,rx:0,ry:0',
-        circle: 'cx:200,cy:200,r50',
+        circle: 'cx:200,cy:200,r:50',
         ellipse: 'cx:200,cy:200,rx:80,ry:30',
         line: 'x1:10,y1:10,x2:100,y2:100'
       }
@@ -80,6 +80,18 @@
 
       function createShape(s) {
         var shape = document.createElementNS(SVG_NS, s)
+        var arr = shapeInfo[s].split(',')
+        var attrs = {}
+        arr.forEach(kv => {
+          var kvArr = kv.split(':');
+          attrs[kvArr[0]] = kvArr[1];
+        });
+        for (const key in attrs) {
+          if (attrs.hasOwnProperty(key)) {
+            const value = attrs[key];
+            shape.setAttribute(key, value)
+          }
+        }
         svg.appendChild(shape)
       }
 
