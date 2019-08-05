@@ -53,7 +53,7 @@
         <div class="title">外观和变换</div>
         <div class="content"></div>
       </div>
-      <svg id="canvas"></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" id="canvas"></svg>
     </div>
     <script>
       var SVG_NS = 'http://www.w3.org/2000/svg'
@@ -80,7 +80,7 @@
 
       function createShape(s) {
         var shape = document.createElementNS(SVG_NS, s)
-        svg.appentChild(shape)
+        svg.appendChild(shape)
       }
 
       function createSVG(shape) {
