@@ -95,18 +95,11 @@
         svg.appendChild(shape)
       }
 
-      function createSVG(shape) {
-        var svg = document.createElementNS(SVG_NS, 'svg')
-        svg.setAttribute('width', '100%')
-        svg.setAttribute('height', '100%')
-        canvas.appendChild(svg)
-        return svg
-      }
       function select(shape) {
         var attrs = shapeInfo[shape.tagName].split(',')
-        var attr, name, value
+        var attr, name, value, attrForm
 
-        attrForm.innerHTML = ''
+        // attrForm.innerHTML = ''
         while (attrs.length) {
           attr = attrs.shift().split(':')
           name = attr[0]
