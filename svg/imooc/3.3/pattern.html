@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>笔刷</title>
+  <style>
+  svg {
+    width: 600px;
+    height: 1200px;
+  }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="p1" x="0" y="0" width="0.2" height="0.2">
+        <circle cx="10" cy="10" r="5" fill="red"></circle>
+        <polygon points="30 10 60 50 0 50" fill="green"></polygon>
+      </pattern>
+      <pattern id="p2" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+        <circle cx="10" cy="10" r="5" fill="red"></circle>
+        <polygon points="30 10 60 50 0 50" fill="green"></polygon>
+      </pattern>
+      <pattern id="p3" x="0" y="0" width="0.250" height="0.250" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
+        <circle cx="0.1" cy="0.1" r="0.1" fill="red"></circle>
+        <polygon points="30 10 60 50 0 50" fill="green"></polygon>
+      </pattern>
+    </defs>
+    <rect x="0" y="0" fill="url(#p3)" width="400" height="300"></rect>
+    <rect x="0" y="400" fill="url(#p2)" width="400" height="300"></rect>
+    <rect x="0" y="800" fill="url(#p1)" width="400" height="300"></rect>
+  </svg>
+</body>
+</html>
+<!--
+patternUnits  指定笔刷整体的单位类型
+ 1. objectBoundingBox 相对单位
+ 2. userSpaceOnUse    绝对单位
+patternContentUnits 指定笔刷内的图形的单位类型
+ 1. objectBoundingBox 相对单位
+ 2. userSpaceOnUse    绝对单位
+-->
