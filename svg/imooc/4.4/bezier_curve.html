@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>贝塞尔曲线</title>
+  <style>
+  svg {
+    width: 600px;
+    height: 1200px;
+  }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <path d="M 100, 100 C 100,200 200,300 300,200" stroke="green"></path>
+    <path d="M 500, 500 Q 200,400 300,200" stroke="red"></path>
+  </svg>
+</body>
+</html>
+<!--
+二次贝塞尔曲线绘制
+M x0 y0 Q x1 y1 x y
+三次贝塞尔曲线绘制
+M x0 y0 C x1 y1 x2 y2 x y
+C：大写为绝对坐标，小写为相对坐标
+-->
