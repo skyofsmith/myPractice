@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>贝塞尔曲线</title>
+  <title>贝塞尔曲线-光滑曲线</title>
   <style>
   svg {
     width: 1200px;
@@ -14,15 +14,15 @@
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg">
-    <path d="M 500, 100 Q 600,300 700,100" stroke="red" stroke-width="2px" fill="none"></path>
-    <path d="M 100, 100 C 200,200 100,300 200,400" stroke="green" stroke-width="2px" fill="none"></path>
+    <path d="M 100, 200 C 100,100 250,100 250,200 S 400,300 400,200" stroke="green" stroke-width="2px" fill="none"></path>
+    <path d="M 100, 400 Q 100,300 200,300 T 300,400 T 400, 500" stroke="green" stroke-width="2px" fill="none"></path>
   </svg>
 </body>
 </html>
 <!--
-二次贝塞尔曲线绘制
-M x0 y0 Q x1 y1 x y
-三次贝塞尔曲线绘制
-M x0 y0 C x1 y1 x2 y2 x y
-C：大写为绝对坐标，小写为相对坐标
+贝塞尔曲线命令 - 光滑曲线
+T:Q的光滑版本
+  C1是上一段曲线的控制点关于当前曲线起始点的镜像位置
+S:C的简化版本
+  C1是上一段曲线的控制点2关于当前曲线起始点的镜像位置
 -->
