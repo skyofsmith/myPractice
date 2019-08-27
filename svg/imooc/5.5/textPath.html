@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>textPath</title>
+  <style>
+  svg {
+    width: 1200px;
+    height: 1200px;
+  }
+  </style>
+</head>
+<body>
+<select name="" id="select">
+  <option value="p1">1</option>
+  <option value="p2">2</option>
+  <option value="p3">3</option>
+</select>
+<svg xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="100" fill="transparent" stroke="green"></rect>
+  <path id="p1" d="M 100 200 Q 200 100 300 200 T 500 200" stroke="green" fill="none"></path>
+  <path id="p2" d="M 100 400 Q 200 300 300 400 T 500 400" stroke="green" fill="none"></path>
+  <path id="p3" d="M 100 600 Q 200 500 300 600 T 500 600" stroke="green" fill="none"></path>
+  <text x="100" y="100"
+        style="font-size: 50px;">
+    <textPath id="textpath" xlink:href="#p1">
+      abcdefghijklmnopqrstuvmxyz
+    </textPath>
+  </text>
+</svg>
+
+<script>
+var XLINK_NS = 'http://www.w3.org/1999/xlink';
+var textpath = document.getElementById('textpath')
+var select = document.getElementById('select')
+select.addEventListener('change', function (e) {
+  var self = e.currentTarget
+  var path = self.value
+  console.log(path)
+  textpath.setAttributeNS(XLINK_NS, 'xlink:href', '#' + path)
+})
+</script>
+</body>
+</html>
+<!--
+text
+
+x 影响文字左右
+y 不影响文字垂直居中
+dy 影响文字垂直居中
+startOffset影响文字左右
+-->
