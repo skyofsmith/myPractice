@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图形的引用 裁切</title>
+  <style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+  }
+  svg {
+    width: 800px;
+    height: 600px;
+  }
+  </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-400 -300 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <polygon id="star" points="0 -10 2 -2 10 0 2 2 0 10 -2 2 -10 0 -2 -2" fill="yellow"></polygon>
+  </defs>
+  <g id="star-group">
+    <use xlink:href="#star" x="100" y="100"></use>
+    <use xlink:href="#star"></use>
+  </g>
+</svg>
+<script>
+var SVG_NS = 'http://www.w3.org/2000/svg'
+var XLINK_NS = 'http://www.w3.org/1999/xlink'
+
+function randow(min, max) {
+  return min + Math.random() * (max - min)
+}
+
+var starRef = document.querySelector('#star')
+var group = document.querySelector('#star-group')
+var starCount = 1000
+while (starCount--) {
+  createStar()
+}
+
+function createStar() {
+  var _star = document.createElementNS(SVG_NS, 'use')
+  _star.setAttributeNS(XLINK_NS, 'xlink:href', '#star')
+  _star.setAttribute('opacity', randow(0.1, 0.8))
+  _star.setAttribute('transform', 'translate(' + randow(-400, 400) + ',' + randow(-300, 100) + '),scale(' + randow(0.3, 0.7) +')')
+  group.appendChild(_star)
+}
+</script>
+</body>
+</html>
+<!--
+text
+
+x 影响文字左右
+y 不影响文字垂直居中
+dy 影响文字垂直居中
+startOffset影响文字左右
+-->
