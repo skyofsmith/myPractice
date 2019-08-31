@@ -36,7 +36,17 @@
         <stop offset="1" stop-color="rgba(255, 255, 255, 0)"></stop>
       </radialGradient>
       <clipPath id="light-mask">
-        <polygon points="0 0 -400 -15 -400 15" fill="rgba(255, 0, 0, 0.5)"></polygon>
+        <polygon points="0 0 -400 -15 -400 15" fill="rgba(255, 0, 0, 0.5)">
+          <animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="rotate"
+          from="0"
+          to="360"
+          dur="10s"
+          repeatCount="indefinite"
+          ></animateTransform>
+        </polygon>
       </clipPath>
     </defs>
     <polygon points="0 0 5 50 -5 50" fill="url(#tower)"></polygon>
