@@ -25,6 +25,13 @@
     <polygon id="star" points="0 -10 2 -2 10 0 2 2 0 10 -2 2 -10 0 -2 -2" fill="yellow"></polygon>
   </defs>
   <g id="star-group"></g>
+  <g id="moon-group">
+    <mask id="moon-mask">
+      <circle cx="-250" cy="-150" r="100" fill="azure"></circle>
+      <circle cx="-200" cy="-200" r="100" fill="black"></circle>
+    </mask>
+    <circle cx="-250" cy="-150" r="100" fill="azure" mask="url(#moon-mask)"></circle>
+  </g>
   <g id="light-tower">
     <defs>
       <linearGradient id="tower" x1="0" y1="0" x2="1" y2="0">
