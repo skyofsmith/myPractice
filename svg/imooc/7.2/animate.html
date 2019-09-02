@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动画</title>
+  <style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+  }
+
+  svg {
+    width: 800px;
+    height: 600px;
+  }
+  </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <animate xlink:href="url(#rect1)"
+           attributeType="XML" attributeName="y"
+           from="10" to="110" dur="3s"></animate>
+  <rect id="rect1" x="0" y="0" width="200" height="100" fill="white"></rect>
+  <rect id="rect2" x="400" y="0" width="200" height="100" fill="white">
+    <animate id="down" begin="0; up.end"
+             attributeType="XML" attributeName="y"
+             from="10" to="110" dur="3s" fill="freeze"></animate>
+    <animate id="up" begin="down.end + 0.3s"
+             attributeType="XML" attributeName="y"
+             from="110" to="10" dur="3s" fill="freeze"></animate>
+    <animate attributeType="XML" attributeName="fill"
+             from="white" to="black" dur="2s" repeatCount="indefinite"></animate>
+  </rect>
+</svg>
+<script>
+var SVG_NS = 'http://www.w3.org/2000/svg'
+var XLINK_NS = 'http://www.w3.org/1999/xlink'
+
+</script>
+</body>
+</html>
+<!--
+text
+
+x 影响文字左右
+y 不影响文字垂直居中
+dy 影响文字垂直居中
+startOffset影响文字左右
+-->
