@@ -35,6 +35,17 @@
     <animate attributeType="XML" attributeName="fill"
              from="white" to="black" dur="2s" repeatCount="indefinite"></animate>
   </rect>
+  <rect id="rect3" x="400" y="400" width="200" height="100" fill="white">
+    <animateTransform id="rotate"
+                      attributeName="transform"
+                      attributeType="XML" type="rotate" from="0" to="-30" dur="3s"></animateTransform>
+    <animateTransform id="scale"
+                      attributeName="transform"
+                      attributeType="XML" type="scale" from="1" to="0.3" dur="3s"></animateTransform>
+<!--    error -->
+    <animate id="translate" attributeName="transform" begin="rotate.end"
+             attributeType="XML" from="translate(0)" to="translate(100)" dur="3s"></animate>
+  </rect>
 </svg>
 <script>
 var SVG_NS = 'http://www.w3.org/2000/svg'
