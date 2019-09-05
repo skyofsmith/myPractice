@@ -17,15 +17,17 @@
  <canvas id="canvas"></canvas>
  <script>
  window.onload = function () {
-    var canvas = document.getElementById('canvas')
-   canvas.width = 800
-   canvas.height = 800
+    var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
 
-   var context = canvas.getContext('2d')
+   var context = canvas.getContext('2d');
 
-   context.moveTo(100, 100)
-   context.lineTo(700, 700)
-   context.stroke()
+   context.moveTo(100, 100);
+   context.lineTo(700, 700);
+   context.lineWidth = 10;
+   context.strokeStyle = '#058';
+   context.stroke();
  }
  </script>
 </body>
