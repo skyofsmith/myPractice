@@ -23,6 +23,7 @@
 
    var context = canvas.getContext('2d');
 
+   context.beginPath();
    context.moveTo(100, 100);
    context.lineTo(300, 400);
    context.lineTo(100, 600);
@@ -30,6 +31,7 @@
    context.strokeStyle = 'red';
    context.stroke();
 
+   context.beginPath();
    context.moveTo(700, 300);
    context.lineTo(600, 600);
    context.lineTo(700, 700);
@@ -37,6 +39,7 @@
    context.strokeStyle = 'green';
    context.stroke();
 
+   context.beginPath();
    context.moveTo(400, 400);
    context.lineTo(200, 200);
    context.lineTo(100, 700);
@@ -45,6 +48,8 @@
    context.stroke();
 
    // then 3 blue line
+
+   // add beginPath, be ok
  }
  </script>
 </body>
