@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>line</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+ <canvas id="canvas"></canvas>
+ <script>
+ window.onload = function () {
+    var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
+
+   var context = canvas.getContext('2d');
+
+   context.beginPath();
+   context.moveTo(100, 100);
+   context.lineTo(300, 400);
+   context.lineTo(100, 600);
+   context.lineWidth = 10;
+   context.strokeStyle = 'red';
+   context.stroke();
+
+   context.beginPath();
+   context.moveTo(700, 300);
+   context.lineTo(600, 600);
+   context.lineTo(700, 700);
+   context.lineWidth = 20;
+   context.strokeStyle = 'green';
+   context.stroke();
+
+   context.beginPath();
+   context.moveTo(400, 400);
+   context.lineTo(200, 200);
+   context.lineTo(100, 700);
+   context.lineWidth = 30;
+   context.strokeStyle = 'blue';
+   context.stroke();
+
+   context
+
+   // then 3 blue line
+
+   // add beginPath, be ok
+ }
+ </script>
+</body>
+</html>
