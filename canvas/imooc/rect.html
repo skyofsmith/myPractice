@@ -24,21 +24,22 @@
    var context = canvas.getContext('2d');
 
    context.beginPath();
-   context.moveTo(100, 350);
-   context.lineTo(500, 350);
-   context.lineTo(500, 200);
-   context.lineTo(700, 400);
-   context.lineTo(500, 600);
-   context.lineTo(500, 450);
-   context.lineTo(100, 450);
+   context.rect(100, 100, 400, 300);
    context.closePath();
-
+   
    context.lineWidth = 30;
    context.fillStyle = 'yellow';
    context.strokeStyle = 'blue';
 
    context.fill();
    context.stroke();
+
+   context.lineWidth = 10;
+   context.fillStyle = 'green';
+   context.strokeStyle = 'red';
+
+   context.fillRect(300, 300, 400, 300);
+   context.strokeRect(300, 300, 400, 300);
 
    // then 3 blue line
 
