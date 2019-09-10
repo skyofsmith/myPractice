@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lineCap</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+window.onload = function () {
+  var canvas = document.getElementById('canvas');
+  canvas.width = 800;
+  canvas.height = 800;
+
+  var context = canvas.getContext('2d');
+
+  context.beginPath();
+  context.moveTo(0, 100);
+  context.lineTo(500, 100);
+  context.lineWidth = 1;
+  context.strokeStyle = 'green';
+  context.stroke();
+
+  context.beginPath();
+  context.moveTo(100, 100);
+  context.lineTo(300, 400);
+  context.lineTo(100, 600);
+  context.lineWidth = 50;
+  context.lineCap = 'butt';
+  context.strokeStyle = 'red';
+  context.stroke();
+
+  context.beginPath();
+  context.moveTo(200, 100);
+  context.lineTo(400, 400);
+  context.lineTo(200, 600);
+  context.lineWidth = 50;
+  context.lineCap = 'round';
+  context.strokeStyle = 'red';
+  context.stroke();
+
+  context.beginPath();
+  context.moveTo(300, 100);
+  context.lineTo(500, 400);
+  context.lineTo(300, 600);
+  context.lineWidth = 50;
+  context.lineCap = 'square';
+  context.strokeStyle = 'red';
+  context.stroke();
+
+  // then 3 blue line
+  // add beginPath, be ok
+  // lineCap
+  // butt(default)
+  // round
+  // square
+}
+</script>
+</body>
+</html>
