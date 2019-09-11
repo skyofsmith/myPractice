@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>line</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+ <canvas id="canvas"></canvas>
+ <script>
+ window.onload = function () {
+   var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
+   var x0 = 400;
+   var y0 = 400;
+   var r0 = 150;
+   var r1 = 300;
+
+   var context = canvas.getContext('2d');
+
+   context.beginPath();
+   for (let i = 0; i < 5; i++) {
+     context.lineTo(x0 + Math.cos((18 + i * 72) * Math.PI / 180) * r1,
+     y0 - Math.sin((18 + i * 72) * Math.PI / 180) * r1);
+     context.lineTo(x0 + Math.cos((54 + i * 72) * Math.PI / 180) * r0,
+     y0 - Math.sin((54 + i * 72) * Math.PI / 180) * r0);
+   }
+   context.closePath();
+   
+   context.lineWidth = 10;
+   context.lineJoin = 'miter';
+   context.miterLimit = 10;
+   context.fillStyle = 'yellow';
+   context.strokeStyle = 'blue';
+
+   context.stroke();
+   /*
+   * lineJoin
+   * miter  (默认)
+   * bevel  折叠效果
+   * round  圆角
+   * */
+   /*
+   * miterLimit
+   * lineJoin = 'miter'时， 两线内外交点超过10px后使用bevel
+   * */
+ }
+ </script>
+</body>
+</html>
