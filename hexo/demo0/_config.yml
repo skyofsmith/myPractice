@@ -3,12 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
-language:
-timezone:
+title: Sam's Blog
+subtitle: sam live here
+description: who is sam?
+author: Sam
+language: zh-CN
+timezone: +8
+intro : 'Enter intro here to display on home page'
+tags:
+- tag1
+- tag2
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -38,7 +42,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
@@ -72,9 +76,14 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: clexy
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'default'
+  line_number: false    # default false
