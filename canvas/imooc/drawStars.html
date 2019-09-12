@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>line</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+window.onload = function () {
+  var canvas = document.getElementById('canvas');
+  canvas.width = 800;
+  canvas.height = 800;
+
+
+  var x0 = 400;
+  var y0 = 400;
+  var r0 = 150;
+  var r1 = 300;
+
+  var context = canvas.getContext('2d');
+  context.fillStyle = 'black';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < 200; i++) {
+    let r = random(10, 20);
+    drawStar(context, random(0, canvas.width), random(0, canvas.height), r, r / 2);
+  }
+
+  function drawStar(context, x0, y0, r0, r1) {
+    context.beginPath();
+    for (let i = 0; i < 5; i++) {
+      context.lineTo(x0 + Math.cos((18 + i * 72) * Math.PI / 180) * r1,
+        y0 - Math.sin((18 + i * 72) * Math.PI / 180) * r1);
+      context.lineTo(x0 + Math.cos((54 + i * 72) * Math.PI / 180) * r0,
+        y0 - Math.sin((54 + i * 72) * Math.PI / 180) * r0);
+    }
+    context.closePath();
+    context.lineWidth = 10;
+    context.fillStyle = 'yellow';
+    context.strokeStyle = 'blue';
+    context.fill();
+  }
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min
+  }
+
+  /*
+  * lineJoin
+  * miter  (默认)
+  * bevel  折叠效果
+  * round  圆角
+  * */
+  /*
+  * miterLimit
+  * lineJoin = 'miter'时， 两线内外交点超过10px后使用bevel
+  * */
+}
+</script>
+</body>
+</html>
