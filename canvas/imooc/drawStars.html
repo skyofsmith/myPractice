@@ -33,10 +33,10 @@ window.onload = function () {
 
   for (let i = 0; i < 200; i++) {
     let r = random(10, 20);
-    drawStar(context, random(0, canvas.width), random(0, canvas.height), r, r / 2);
+    drawStar(context, random(0, canvas.width), random(0, canvas.height), r, r / 2, random(0, 1));
   }
 
-  function drawStar(context, x0, y0, r0, r1) {
+  function drawStar(context, x0, y0, r0, r1, alpha) {
     context.beginPath();
     for (let i = 0; i < 5; i++) {
       context.lineTo(x0 + Math.cos((18 + i * 72) * Math.PI / 180) * r1,
@@ -46,7 +46,7 @@ window.onload = function () {
     }
     context.closePath();
     context.lineWidth = 10;
-    context.fillStyle = 'yellow';
+    context.fillStyle = 'rgba(255, 255, 0, ' + alpha + ')';
     context.strokeStyle = 'blue';
     context.fill();
   }
