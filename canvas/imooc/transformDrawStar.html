@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transform</title>
+  <style>
+  #canvas {
+    outline: red solid 1px;
+  }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+window.onload = function () {
+  var canvas = document.getElementById('canvas');
+  canvas.width = 800;
+  canvas.height = 800;
+  var context = canvas.getContext('2d');
+
+  for (let i = 0; i < 200; i++) {
+    let r = random(10, 20);
+    context.save();
+    context.translate(random(0, 800), random(0, 800));
+    drawStar(context);
+    context.restore();
+  }
+
+  function drawStar(context) {
+    context.beginPath();
+    for (let i = 0; i < 5; i++) {
+      context.lineTo(Math.cos((18 + i * 72) * Math.PI / 180) * 3,
+        Math.sin((18 + i * 72) * Math.PI / 180) * 3);
+      context.lineTo(Math.cos((54 + i * 72) * Math.PI / 180) * 15,
+        Math.sin((54 + i * 72) * Math.PI / 180) * 15);
+    }
+    context.closePath();
+    context.lineWidth = 10;
+    context.fillStyle = 'rgba(255, 255, 0, 1)';
+    context.strokeStyle = 'blue';
+    context.fill();
+  }
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min
+  }
+}
+</script>
+</body>
+</html>
