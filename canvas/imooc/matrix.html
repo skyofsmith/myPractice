@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transform</title>
+  <style>
+  #canvas {
+    outline: red solid 1px;
+  }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+window.onload = function () {
+  var canvas = document.getElementById('canvas');
+  canvas.width = 800;
+  canvas.height = 800;
+  var context = canvas.getContext('2d');
+  context.fillStyle = 'red';
+  context.strokeStyle = '#058';
+  context.lineWidth = 5;
+  ////////////////////////////////
+  // a c e
+  // b d f
+  ////////////////////////////////
+  // a, d 水平，垂直缩放
+  // b, c 水平，垂直倾斜
+  // e, f 水平，垂直位移
+  ////////////////////////////////
+  context.save();
+  context.transform(1, 0, 0, 1, 0, 0);
+  context.fillRect(50, 50, 300, 300);
+  context.strokeRect(50, 50, 300, 300);
+  context.restore();
+}
+</script>
+</body>
+</html>
