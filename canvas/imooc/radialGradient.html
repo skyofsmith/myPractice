@@ -20,7 +20,7 @@ window.onload = function () {
   canvas.width = 800;
   canvas.height = 800;
   var context = canvas.getContext('2d');
-  var linearGradient = context.createLinearGradient(200, 200, 600, 600);
+  var linearGradient = context.createRadialGradient(400, 400, 0, 600, 600, 500);
   linearGradient.addColorStop(0, '#fff');
   linearGradient.addColorStop(1, '#000');
 
