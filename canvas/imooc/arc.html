@@ -20,9 +20,13 @@ window.onload = function () {
   canvas.width = 1200;
   canvas.height = 800;
   var context = canvas.getContext('2d');
-  context.beginPath();
-  context.arc(200, 200, 100, 0, 90, 0);
   context.strokeStyle = 'red';
+  context.beginPath();
+  context.arc(200, 200, 100, 1, Math.PI * 0.5);
+  context.stroke();
+  // context.endPath();
+  context.beginPath();
+  context.arc(400, 400, 100, -1, Math.PI * 0.5, true);
   context.stroke();
 }
 </script>
