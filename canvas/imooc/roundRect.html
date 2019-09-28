@@ -21,13 +21,14 @@ window.onload = function () {
   canvas.height = 800;
   var context = canvas.getContext('2d');
 
-  drawRoundRect(context, 100, 100, 300, 200, 50);
+  drawRoundRect(context, 100, 100, 600, 500, 50);
+  drawRoundRect(context, 0, 0, 100, 100, 10);
 
   function drawRoundRect(cxt, x, y, width, height, radius) {
     cxt.save();
     cxt.translate(x, y);
     pathRoundRect(cxt, width, height, radius);
-    cxt.strokeStyle = 'blue';
+    cxt.strokeStyle = 'black';
     cxt.stroke();
     cxt.restore();
 
