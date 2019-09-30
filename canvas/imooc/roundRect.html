@@ -24,7 +24,7 @@ window.onload = function () {
 
   drawRoundRect(context, 100, 100, 600, 500, 50);
   fillRoundRect(context, 0, 0, 100, 100, 10, 'maroon');
-  strokeRoundRect(context, 700, 700, 100, 100, 10, 'azure');
+  strokeRoundRect(context, 700, 700, 100, 100, 10, 5, 'azure');
 
   function drawRoundRect(cxt, x, y, width, height, radius) {
     if (2 * radius > width || 2 * radius > height) {
@@ -50,13 +50,14 @@ window.onload = function () {
     cxt.restore();
   }
 
-  function strokeRoundRect(cxt, x, y, width, height, radius, strokeColor) {
+  function strokeRoundRect(cxt, x, y, width, height, radius, lineWidth, strokeColor) {
     if (2 * radius > width || 2 * radius > height) {
       return
     }
     cxt.save();
     cxt.translate(x, y);
     pathRoundRect(cxt, width, height, radius);
+    cxt.lineWidth = lineWidth || 1;
     cxt.strokeStyle = strokeColor || 'black';
     cxt.stroke();
     cxt.restore();
