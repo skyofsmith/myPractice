@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>round rect by arcTo</title>
+  <style>
+  #canvas {
+    outline: red solid 1px;
+    background-color: #888888;
+  }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+window.onload = function () {
+  var canvas = document.getElementById('canvas');
+  canvas.width = 1200;
+  canvas.height = 800;
+  var context = canvas.getContext('2d');
+
+  drawRoundRect(context, 100, 100, 600, 500, 50);
+  fillRoundRect(context, 0, 0, 100, 100, 10, 'maroon');
+  strokeRoundRect(context, 700, 700, 100, 100, 10, 5, 'azure');
+
+  function drawRoundRect(cxt, x, y, width, height, radius) {
+    if (2 * radius > width || 2 * radius > height) {
+      return
+    }
+    cxt.save();
+    cxt.translate(x, y);
+    pathRoundRect(cxt, width, height, radius);
+    cxt.strokeStyle = 'black';
+    cxt.stroke();
+    cxt.restore();
+  }
+
+  function fillRoundRect(cxt, x, y, width, height, radius, fillColor) {
+    if (2 * radius > width || 2 * radius > height) {
+      return
+    }
+    cxt.save();
+    cxt.translate(x, y);
+    pathRoundRect(cxt, width, height, radius);
+    cxt.fillStyle = fillColor || 'black';
+    cxt.fill();
+    cxt.restore();
+  }
+
+  function strokeRoundRect(cxt, x, y, width, height, radius, lineWidth, strokeColor) {
+    if (2 * radius > width || 2 * radius > height) {
+      return
+    }
+    cxt.save();
+    cxt.translate(x, y);
+    pathRoundRect(cxt, width, height, radius);
+    cxt.lineWidth = lineWidth || 1;
+    cxt.strokeStyle = strokeColor || 'black';
+    cxt.stroke();
+    cxt.restore();
+  }
+
+  function pathRoundRect(cxt, width, height, radius) {
+    cxt.beginPath();
+    cxt.moveTo(0, radius);
+    cxt.arcTo(0, 0, radius, 0, radius);
+    cxt.lineTo(width - radius, 0);
+    cxt.arcTo(width, 0, width, radius, radius);
+    cxt.lineTo(width, height - radius);
+    cxt.arcTo(width, height, width - radius, height, radius);
+    cxt.lineTo(radius, height);
+    cxt.arcTo(0, height, 0, height - radius, radius);
+    cxt.closePath();
+  }
+}
+</script>
+</body>
+</html>
