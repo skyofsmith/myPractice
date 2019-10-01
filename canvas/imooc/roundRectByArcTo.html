@@ -65,14 +65,11 @@ window.onload = function () {
 
   function pathRoundRect(cxt, width, height, radius) {
     cxt.beginPath();
-    cxt.moveTo(0, radius);
-    cxt.arcTo(0, 0, radius, 0, radius);
-    cxt.lineTo(width - radius, 0);
-    cxt.arcTo(width, 0, width, radius, radius);
-    cxt.lineTo(width, height - radius);
-    cxt.arcTo(width, height, width - radius, height, radius);
-    cxt.lineTo(radius, height);
-    cxt.arcTo(0, height, 0, height - radius, radius);
+    cxt.moveTo(0, height);
+    cxt.arcTo(0, 0, width, 0, radius);
+    cxt.arcTo(width, 0, width, height, radius);
+    cxt.arcTo(width, height, 0, height, radius);
+    cxt.arcTo(0, height, 0, 0, radius);
     cxt.closePath();
   }
 }
