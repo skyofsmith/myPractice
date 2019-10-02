@@ -23,10 +23,14 @@ window.onload = function () {
   var context = canvas.getContext('2d');
   const PI = Math.PI;
   context.arc(400, 400, 300, 0.5 * PI, 1.5 * PI, true);
-  // context.moveTo(400, 100);
-  context.arc(0, 400, 450, 0.5 * PI, PI, true);
+  context.moveTo(400, 100);
+  context.arcTo(1200, 400, 400, 700, (400 - 100) * dis(400, 100, 1200, 400) / (1200 - 400));
   context.strokeStyle = 'red';
   context.stroke();
+}
+
+function dis(x1, y1, x2, y2) {
+  return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2))
 }
 </script>
 </body>
