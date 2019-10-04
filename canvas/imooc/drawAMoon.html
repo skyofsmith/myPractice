@@ -34,7 +34,14 @@ function dis(x1, y1, x2, y2) {
 }
 
 function fillMoon(cxt, d, x, y, R, rot, fillColor) {
-
+  cxt.save();
+  cxt.translate(x, y);
+  cxt.rotate(rot * Math.PI / 180);
+  cxt.scale(R, R);
+  pathMoon(cxt, d);
+  cxt.fillColor = fillColor || '#fb5';
+  cxt.fill();
+  cxt.restore();
 }
 
 function pathMoon(cxt, d, x, y, R, rot, fillColor) {
