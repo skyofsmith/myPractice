@@ -23,6 +23,7 @@
         canvas.width = 1200
         canvas.height = 800
         var context = canvas.getContext('2d')
+        fillMoon(context, 500, 100, 100, 300, 0, 'blue')
       }
 
       function fillMoon(cxt, d, x, y, R, rot, fillColor) {
@@ -39,16 +40,16 @@
       function pathMoon(cxt, d, x, y, R, rot, fillColor) {
         cxt.beginPath()
         const PI = Math.PI
-        context.arc(0, 0, 1, 0.5 * PI, 1.5 * PI, true);
-        context.moveTo(0, -1)
-        context.arcTo(
+        cxt.arc(0, 0, 1, 0.5 * PI, 1.5 * PI, true);
+        cxt.moveTo(0, -1)
+        cxt.arcTo(
           d,
           0,
           0,
           1,
-          dis(0, -1, d, 0)) / d
+          dis(0, -1, d, 0) / d
         );
-        context.stroke()
+        cxt.stroke()
       }
 
       function dis(x1, y1, x2, y2) {
