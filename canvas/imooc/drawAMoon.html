@@ -19,41 +19,34 @@
     <canvas id="canvas"></canvas>
     <script>
       window.onload = function() {
-        var canvas = document.getElementById('canvas')
-        canvas.width = 1200
-        canvas.height = 800
-        var context = canvas.getContext('2d')
-        fillMoon(context, 2, 400, 400, 300, 0, 'blue')
-      }
+        var canvas = document.getElementById('canvas');
+        canvas.width = 1200;
+        canvas.height = 800;
+        var context = canvas.getContext('2d');
+        fillMoon(context, 2, 400, 400, 300, 0, 'blue');
+      };
 
       function fillMoon(cxt, d, x, y, R, rot, fillColor) {
-        cxt.save()
-        cxt.translate(x, y)
-        cxt.rotate((rot * Math.PI) / 180)
-        cxt.scale(R, R)
-        pathMoon(cxt, d)
-        cxt.fillColor = fillColor || '#fb5'
-        cxt.fill()
-        cxt.restore()
+        cxt.save();
+        cxt.translate(x, y);
+        cxt.rotate((rot * Math.PI) / 180);
+        cxt.scale(R, R);
+        pathMoon(cxt, d);
+        cxt.fillColor = fillColor || '#fb5';
+        cxt.fill();
+        cxt.restore();
       }
 
       function pathMoon(cxt, d, x, y, R, rot, fillColor) {
-        cxt.beginPath()
-        const PI = Math.PI
-        cxt.arc(0, 0, 1, 0.5 * PI, 1.5 * PI, true);
-        cxt.moveTo(0, -1)
-        cxt.arcTo(
-          d,
-          0,
-          0,
-          1,
-          dis(0, -1, d, 0) / d
-        );
-        cxt.stroke()
+        cxt.beginPath();
+        cxt.arc(0, 0, 1, 0.5 * Math.PI, 1.5 * Math.PI, true);
+        cxt.moveTo(0, -1);
+        cxt.arcTo(d, 0, 0, 1, dis(0, -1, d, 0) / d);
+        cxt.closePath();
       }
 
       function dis(x1, y1, x2, y2) {
-        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2))
+        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
       }
     </script>
   </body>
