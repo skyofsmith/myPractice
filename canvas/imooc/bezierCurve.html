@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>bezier curve</title>
+  <style>
+  #canvas {
+    outline: red solid 1px;
+    background-color: #888888;
+  }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+window.onload = function () {
+  var canvas = document.getElementById('canvas');
+  canvas.width = 1200;
+  canvas.height = 800;
+  var context = canvas.getContext('2d');
+
+  context.moveTo(0, 0);
+  context.quadraticCurveTo(100, 0, 100, 100);
+  context.lineWidth = 5;
+  context.strokeStyle = 'maroon';
+  context.stroke();
+}
+</script>
+</body>
+</html>
