@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>text</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+ <canvas id="canvas"></canvas>
+ <script>
+ window.onload = function () {
+   var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
+
+   var context = canvas.getContext('2d');
+   var linearGrad = context.createLinearGradient(0, 0, 300, 0);
+   linearGrad.addColorStop(0, '#f00');
+   linearGrad.addColorStop(0.33, '#0f0');
+   linearGrad.addColorStop(0.66, '#00f');
+   linearGrad.addColorStop(1, '#f00');
+   context.font = 'bold 40px Arial';
+   context.fillStyle = linearGrad;
+   context.fillText('Hello World!', 100, 100);
+   context.strokeStyle = linearGrad;
+   context.lineWidth = 2;
+   context.strokeText('Hello World!', 100, 200);
+
+   context.fillText('Hello World!', 100, 300, 200);
+   context.strokeText('Hello World!', 100, 400, 200);
+ }
+ </script>
+</body>
+</html>
