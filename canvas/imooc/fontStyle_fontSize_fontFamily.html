@@ -18,8 +18,8 @@
  <script>
  window.onload = function () {
    var canvas = document.getElementById('canvas');
-   canvas.width = 800;
-   canvas.height = 800;
+   canvas.width = 1800;
+   canvas.height = 1800;
 
    var context = canvas.getContext('2d');
 
@@ -34,10 +34,18 @@
 
 
    context.font = 'bold 40px Arial';
-   context.fillText('Hello World!', 500, 100);
+   context.fillText('Hello World!', 700, 100);
 
    context.font = 'small-caps bold 40px sans-serif';
-   context.fillText('Hello World!', 500, 300);
+   context.fillText('Hello World!', 700, 300);
+
+   for (let i = 1; i <= 9; i++) {
+     context.font = i + '00 40px Arial';
+     context.fillText('Hello World!', 400, i * 100);
+   }
+
+
+
  }
  </script>
 </body>
@@ -54,8 +62,9 @@ font-variant:
 
 
 font-weight:
-  lighter 
+  lighter
   normal  (Default)
   bold
   bolder
+  100, 200, 300, 400(normal), 500, 600, 700(bold), 800, 900
 -->
