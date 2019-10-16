@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>text</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+ <canvas id="canvas"></canvas>
+ <script>
+ window.onload = function () {
+   var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
+
+   var context = canvas.getContext('2d');
+   context.strokeStyle = 'red';
+   context.lineWidth = 1;
+   context.moveTo(400, 0);
+   context.lineTo(400, 800);
+   context.stroke();
+   context.font = 'bold 40px Arial';
+
+   context.textAlign = 'left';
+   context.fillText('Hello World!', 400, 100);
+
+   context.textAlign = 'center';
+   context.fillText('Hello World!', 400, 300);
+
+   context.textAlign = 'right';
+   context.fillText('Hello World!', 400, 500);
+ }
+ </script>
+</body>
+</html>
