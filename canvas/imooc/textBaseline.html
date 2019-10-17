@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>text</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+ <canvas id="canvas"></canvas>
+ <script>
+ var word = 'Hello World!你好，世界！';
+ window.onload = function () {
+   var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
+
+   var context = canvas.getContext('2d');
+   context.font = 'bold 40px Arial';
+   function drawLine(y) {
+     context.save();
+     context.moveTo(0, y);
+     context.lineTo(800, y);
+     context.lineWidth = 1;
+     context.strokeStyle = 'red';
+     context.stroke();
+     context.restore();
+   }
+
+   context.textBaseline = 'top';
+   context.fillText(word, 200, 100);
+   drawLine(100);
+
+   context.textBaseline = 'middle';
+   context.fillText(word, 200, 200);
+   drawLine(200);
+
+   context.textBaseline = 'bottom';
+   context.fillText(word, 200, 300);
+   drawLine(300);
+
+   context.textBaseline = 'alphabetic';
+   context.fillText(word, 200, 400);
+   drawLine(400);
+
+   context.textBaseline = 'ideographic';
+   context.fillText(word, 200, 500);
+   drawLine(500);
+
+   context.textBaseline = 'hanging';
+   context.fillText(word, 200, 600);
+   drawLine(600);
+ }
+ </script>
+</body>
+</html>
+<!--
+textBaseline
+  top
+  middle
+  bottom
+  alphabetic
+  ideographic
+  hanging
+-->
