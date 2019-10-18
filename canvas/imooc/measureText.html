@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>text</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+ <canvas id="canvas"></canvas>
+ <script>
+ var word = 'Hello World!你好，世界！';
+ window.onload = function () {
+   var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
+
+   var context = canvas.getContext('2d');
+   context.fillStyle = '#058';
+   context.font = 'bold 40px Arial';
+   context.fillText('Hello World!', 40, 100);
+
+   var mt = context.measureText('Hello World!');
+   console.log(mt);
+   var textWidth = mt.width;
+   context.fillText('string width is ' + textWidth + 'px', 40, 200);
+ }
+ </script>
+</body>
+</html>
+<!--
+textBaseline
+  top
+  middle
+  bottom
+  alphabetic
+  ideographic
+  hanging
+-->
