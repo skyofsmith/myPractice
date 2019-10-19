@@ -5,7 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>text</title>
+  <title>shadow</title>
   <style>
   #canvas_ {
     width: 400px;
@@ -23,14 +23,14 @@
    canvas.height = 800;
 
    var context = canvas.getContext('2d');
-   context.fillStyle = '#058';
-   context.font = 'bold 40px Arial';
-   context.fillText('Hello World!', 40, 100);
+   context.shadowColor = 'gray';
+   context.shadowOffsetX = 20;
+   context.shadowOffsetY = 20;
+   context.shadowBlur = 5;
 
-   var mt = context.measureText('Hello World!');
-   console.log(mt);
-   var textWidth = mt.width;
-   context.fillText('string width is ' + textWidth + 'px', 40, 200);
+   context.fillRect(100, 100, 200, 200);
+
+   context.fillText(word, 300, 500);
  }
  </script>
 </body>
