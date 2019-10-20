@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>global</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+ <canvas id="canvas"></canvas>
+ <script>
+ var word = 'Hello World!你好，世界！';
+ window.onload = function () {
+   var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
+
+   var context = canvas.getContext('2d');
+   context.globalAlpha = 0.9;
+   // context.globalCompositeOperation = 'source-over';
+   context.globalCompositeOperation = 'destination-over';
+
+   context.fillStyle = 'blue';
+   context.fillRect(100, 100, 200, 200);
+
+   context.fillStyle = 'red';
+   context.fillRect(200, 200, 200, 200);
+
+
+ }
+ </script>
+</body>
+</html>
+<!--
+globalAlpha 全局透明度
+  0 ~ 1
+
+globalCompositeOperation 覆盖
+  source-over 后绘制覆盖先绘制的
+  source-atop 后绘制覆盖先绘制的 先绘制的区域限定后绘制的
+  source-in   只显示后绘制 先绘制的区域限定后绘制的
+  source-out  只显示后绘制 先绘制的区域外限定后绘制的
+  destination-over  先绘制覆盖后绘制的
+  destination-atop  先绘制覆盖后绘制的 后绘制的区域限定先绘制的
+  destination-in    只显示先绘制 后绘制的区域限定先绘制的
+  destination-out   只显示先绘制 后绘制的区域限定先绘制的
+  lighter 交叉区域颜色混合叠加
+  copy    只显示后绘制的
+  xor     异或，重叠的区域为空
+-->
