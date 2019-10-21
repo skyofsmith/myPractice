@@ -23,8 +23,15 @@
    canvas.height = 800;
 
    var context = canvas.getContext('2d');
+
+   context.beginPath();
+   context.fillStyle = 'black';
+   context.fillRect(0, 0, canvas.width, canvas.height);
+
    context.beginPath();
    context.arc(400, 400, 150, 0, Math.PI * 2);
+   context.fillStyle = '#fff';
+   context.fill();
    context.clip();
 
    context.font = 'bold 150px Arial';
