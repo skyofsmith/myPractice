@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>isPointInPath</title>
+  <style>
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+  </style>
+</head>
+<body>
+ <canvas id="canvas"></canvas>
+ <script>
+ window.onload = function () {
+   var canvas = document.getElementById('canvas');
+   canvas.width = 800;
+   canvas.height = 800;
+
+   var context = canvas.getContext('2d');
+
+   context.beginPath();
+   context.arc(400, 400, 300, 0, Math.PI * 2, false);
+   context.arc(400, 400, 150, 0, Math.PI * 2, true);
+   context.closePath();
+   context.fillStyle = '#058';
+   context.shadowColor = 'gray';
+   context.shadowOffsetX = 10;
+   context.shadowOffsetY = 10;
+   context.shadowBlur = 10;
+   context.fill();
+   canvas.addEventListener('mouseup', function (e) {
+     var x = e.clientX - canvas.getBoundingClientRect().left;
+     var y = e.clientY - canvas.getBoundingClientRect().top;
+     if (context.isPointInPath(x, y)) {
+       console.log('in');
+     } else {
+       console.log('out');
+     }
+   })
+ }
+ </script>
+</body>
+</html>
+<!--
+-->
