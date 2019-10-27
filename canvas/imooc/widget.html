@@ -5,7 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>isPointInPath</title>
+  <title>widget</title>
   <style>
   .wrap {
     position: relative;
@@ -31,7 +31,7 @@
 </head>
 <body>
 <div class="wrap">
-  <canvas id="canvas"></canvas>
+  <canvas id="canvas">当前浏览器不支持Canvas， 请更换浏览器</canvas>
   <div class="ctrl">
     <h1>title</h1>
     <a href="#">stop</a>
@@ -41,13 +41,17 @@
 </div>
 
  <script>
+ var isMoving = true;
+ var bgColor = '#fff';
  window.onload = function () {
    var canvas = document.getElementById('canvas');
    canvas.width = 800;
    canvas.height = 800;
 
    var context = canvas.getContext('2d');
+   setInterval(function () {
 
+   }, 10)
  }
  </script>
 </body>
