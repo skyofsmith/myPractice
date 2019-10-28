@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ellipse</title>
+  <style>
+  .wrap {
+    position: relative;
+  }
+
+  #canvas_ {
+    width: 400px;
+    height: 300px;
+  }
+
+  .ctrl {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .white {
+    background-color: #fff;
+    color: #000;
+  }
+
+  .black {
+    background-color: #000;
+    color: #fff;
+  }
+  </style>
+</head>
+<body>
+<canvas id="canvas">当前浏览器不支持Canvas， 请更换浏览器</canvas>
+
+<script>
+var isMoving = true;
+var bgColor = '#fff';
+window.onload = function () {
+  var canvas = document.getElementById('canvas');
+  canvas.width = 800;
+  canvas.height = 800;
+
+  var context = canvas.getContext('2d');
+  context.beginPath();
+  context.ellipse(400, 400, 300, 200, 0, 0, Math.PI * 2);
+  context.stroke();
+}
+</script>
+</body>
+</html>
+<!--
+-->
