@@ -5,7 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>ellipse</title>
+  <title>extend context</title>
   <style>
   .wrap {
     position: relative;
@@ -45,13 +45,20 @@ window.onload = function () {
   canvas.height = 800;
 
   var context = canvas.getContext('2d');
-  context.beginPath();
-  if (context.ellipse) {
-    context.ellipse(400, 400, 300, 200, 0, 0, Math.PI * 2);
-  } else {
-    alert('no ellipse')
-  }
-  context.stroke();
+  CanvasRenderingContext2D.prototype.fillStar = function (r, R, x, y, rot) {
+    this.beginPath();
+    for (var i = 0; i < 5; i++) {
+      this.lineTo(Math.cos( (18 + i * 72 - rot) / 180 * Math.PI) * R + x,
+        -Math.sin( (18 + i * 72 - rot) / 180 * Math.PI) * R + y);
+      this.lineTo(Math.cos( (54 + i * 72 - rot) / 180 * Math.PI) * R + x,
+        -Math.sin( (54 + i * 72 - rot) / 180 * Math.PI) * R + y);
+    }
+    this.closePath();
+    this.fill();
+  };
+
+  context.fillStyle = '#058';
+  context.fillStar(150, 300, 400, 400, 0);
 }
 </script>
 </body>
