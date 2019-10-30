@@ -48,10 +48,10 @@ window.onload = function () {
   CanvasRenderingContext2D.prototype.fillStar = function (r, R, x, y, rot) {
     this.beginPath();
     for (var i = 0; i < 5; i++) {
-      this.lineTo(Math.cos( (18 + i * 72 - rot) / 180 * Math.PI) * R + x,
-        -Math.sin( (18 + i * 72 - rot) / 180 * Math.PI) * R + y);
-      this.lineTo(Math.cos( (54 + i * 72 - rot) / 180 * Math.PI) * R + x,
-        -Math.sin( (54 + i * 72 - rot) / 180 * Math.PI) * R + y);
+      this.lineTo(Math.cos((18 + i * 72 - rot) / 180 * Math.PI) * R + x,
+        -Math.sin((18 + i * 72 - rot) / 180 * Math.PI) * R + y);
+      this.lineTo(Math.cos((54 + i * 72 - rot) / 180 * Math.PI) * r + x,
+        -Math.sin((54 + i * 72 - rot) / 180 * Math.PI) * r + y);
     }
     this.closePath();
     this.fill();
