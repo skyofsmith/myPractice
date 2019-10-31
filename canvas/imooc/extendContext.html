@@ -45,20 +45,30 @@ window.onload = function () {
   canvas.height = 800;
 
   var context = canvas.getContext('2d');
-  CanvasRenderingContext2D.prototype.fillStar = function (r, R, x, y, rot) {
+  var originalMoveTo = CanvasRenderingContext2D.prototype.moveTo;
+  CanvasRenderingContext2D.prototype.lastMovoToLoc = {};
+
+  CanvasRenderingContext2D.prototype.moveTo = function (x, y) {
+    originalMoveTo.apply(context, [x, y]);
+    this.lastMovoToLoc.x = x;
+    this.lastMovoToLoc.y = y;
+  };
+
+  CanvasRenderingContext2D.prototype.fillStar = function (r, R, rot) {
     this.beginPath();
     for (var i = 0; i < 5; i++) {
-      this.lineTo(Math.cos((18 + i * 72 - rot) / 180 * Math.PI) * R + x,
-        -Math.sin((18 + i * 72 - rot) / 180 * Math.PI) * R + y);
-      this.lineTo(Math.cos((54 + i * 72 - rot) / 180 * Math.PI) * r + x,
-        -Math.sin((54 + i * 72 - rot) / 180 * Math.PI) * r + y);
+      this.lineTo(Math.cos((18 + i * 72 - rot) / 180 * Math.PI) * R + this.lastMovoToLoc.x,
+        -Math.sin((18 + i * 72 - rot) / 180 * Math.PI) * R + this.lastMovoToLoc.y);
+      this.lineTo(Math.cos((54 + i * 72 - rot) / 180 * Math.PI) * r + this.lastMovoToLoc.x,
+        -Math.sin((54 + i * 72 - rot) / 180 * Math.PI) * r + this.lastMovoToLoc.y);
     }
     this.closePath();
     this.fill();
   };
 
   context.fillStyle = '#058';
-  context.fillStar(150, 300, 400, 400, 0);
+  context.moveTo(400, 400);
+  context.fillStar(150, 300, 0);
 }
 </script>
 </body>
