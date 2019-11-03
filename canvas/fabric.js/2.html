@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>1</title>
+  <script src="./fabric.min.js"></script>
+  <style type="text/css">
+  body {
+    background-color: #cccccc;
+  }
+
+  #main {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+  }
+  </style>
+</head>
+<body>
+
+<canvas id="main" width="800" height="800"></canvas>
+<script type="text/javascript">
+var canvas = new fabric.Canvas('main');
+var rect = new fabric.Rect({
+  left: 100,
+  top: 100,
+  fill: 'red',
+  width: 100,
+  height: 100
+});
+canvas.add(rect);
+
+var circle = new fabric.Circle({
+  radius: 50,
+  fill: 'green',
+  left: 200,
+  top: 200
+})
+canvas.add(circle);
+
+var triangle = new fabric.Triangle({
+  width: 80,
+  height: 100,
+  fill: 'blue',
+  left: 300,
+  top: 300
+});
+
+canvas.add(triangle);
+</script>
+</body>
+</html>
