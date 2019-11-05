@@ -17,9 +17,16 @@
 <script type="text/javascript">
 var canvas = new fabric.Canvas('main');
 var pic = document.getElementById('img');
+fabric.Image.fromURL('./3.jpg', function (oImg) {
+  oImg.scale(2);
+  canvas.add(oImg);
+});
 var img = new fabric.Image(pic, {
-  left: 100,
-  top: 100
+  left: 400,
+  top: 400,
+  width: 300,
+  height: 300,
+  angle: 30
 });
 canvas.add(img);
 </script>
