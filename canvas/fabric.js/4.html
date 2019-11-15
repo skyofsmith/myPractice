@@ -16,6 +16,13 @@
 <img id="img" src="./3.jpg" alt="3.jpg">
 <script type="text/javascript">
 var canvas = new fabric.Canvas('main');
+var path = new fabric.Path('M 0 0 L 200 100 L 170 200 z');
+path.set({
+  left: 120,
+  top: 120,
+  fill: 'maroon'
+});
+canvas.add(path);
 </script>
 </body>
 </html>
