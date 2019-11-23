@@ -24,7 +24,12 @@ fabric.Image.fromURL('./3.jpg', function (img) {
     left: 400,
     top: 400
   });
-  img.filters.push(new fabric.Image.filters.Sepia());
+  img.filters.push(
+    new fabric.Image.filters.Sepia(),
+    new fabric.Image.filters.Brightness({
+      brightness: 0.5
+    })
+  );
   img.applyFilters();
   canvas.add(img);
 });
