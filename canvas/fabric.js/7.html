@@ -20,8 +20,17 @@ var color5 = new fabric.Color('rgba(100, 150, 200, 0.5)');
 
 var color6 = color1.toRgb();
 var color7 = color5.toHex();
+var color8 = color1.overlayWith(color3).toRgb();
 console.log(color6);
 console.log(color7);
+var rect = new fabric.Rect({
+  left: 100,
+  top: 100,
+  width: 100,
+  height: 100,
+  fill: color8
+});
+canvas.add(rect);
 </script>
 </body>
 </html>
