@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>8</title>
+  <style>
+  </style>
+  <script src="./fabric.js"></script>
+</head>
+<body>
+
+<canvas id="main" width="800" height="800"></canvas>
+<script type="text/javascript">
+var canvas = new fabric.Canvas('main');
+var circle = new fabric.Circle({
+  left: 100,
+  top: 100,
+  radius: 50,
+  strokeWidth: 1,
+  stroke: 'red'
+});
+circle.setGradient('fill', {
+  x1: 0,
+  y1: 0,
+  x2: 0,
+  y2: circle.height,
+  colorStops: {
+    0: '#000',
+    1: '#fff'
+  }
+});
+canvas.add(circle);
+</script>
+</body>
+</html>
