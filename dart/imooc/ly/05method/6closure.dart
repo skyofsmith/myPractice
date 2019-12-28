@@ -11,8 +11,7 @@ void main() {
 a() {
   var count = 0;
 
-  printCount() {
+  return() {
     print(count++);
-  }
-  return printCount;
+  };
 }
