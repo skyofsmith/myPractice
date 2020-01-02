@@ -1,5 +1,6 @@
 void main() {
   var p = new Person("sam", 28, "Male");
+  var p1 = Person.withName("Dr");
 }
 
 class Person{
@@ -13,6 +14,12 @@ class Person{
   }*/
   Person(this.name, this.age, this.gender){
     print(name);
+  }
+  Person.withName(name) {
+    this.name = name;
+  }
+  Person.withAge(age) {
+    this.age = age;
   }
 
   void work() {
