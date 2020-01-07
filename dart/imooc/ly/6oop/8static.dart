@@ -4,6 +4,7 @@ void main() {
 
 }
 class Page {
+  static const int maxPage = 10;
   static int currentPage = 1;
 
   static void scrollDown() {
