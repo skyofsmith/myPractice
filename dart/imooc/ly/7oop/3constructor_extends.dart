@@ -1,5 +1,5 @@
 void main() {
-  var s = new Student("Sam");
+  var s = new Student("Sam", "Male");
   print(s.name);
 }
 
@@ -13,6 +13,7 @@ class Person {
 
 class Student extends Person {
   int age;
+  final String gender;
 
-  Student(String name) :super.withName(name);
+  Student(String name, String g) : gender = g, super.withName(name);
 }
