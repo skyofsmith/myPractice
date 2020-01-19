@@ -22,7 +22,7 @@ class B {
 
 class Test{}
 
-class C extends Test {
+class C /*extends Test */{
   void a() {
     print("C.a()...");
   }
