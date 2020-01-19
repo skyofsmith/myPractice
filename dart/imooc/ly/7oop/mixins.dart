@@ -7,16 +7,20 @@ abstract class Engine {
 }
 
 class OilEngine implements Engine {
-  void work("work with oil");
+  void work() {
+    print("work with oil");
+  }
 }
 
 class ElectricEngine implements Engine {
-  void work("work with electric");
+  void work() {
+    print("work with electric");
+  }
 }
 
 class Tyre {
   String name;
-  void run() {};
+  void run() {}
 }
 
 class Car = Tyre with ElectricEngine;
