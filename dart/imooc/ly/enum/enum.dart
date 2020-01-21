@@ -1,5 +1,6 @@
 void main() {
   var currentSeason = Season.winter;
+  print(currentSeason.index);
 
   switch(currentSeason) {
     case Season.spring:
