@@ -10,6 +10,11 @@
 </template>
 <script>
 export default {
-  name: "Observable"
+  name: "Observable",
+  data() {
+    return {}
+  },
+  mounted() {
+  }
 };
 </script>
