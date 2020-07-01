@@ -1,5 +1,6 @@
-import * as Rx from 'rxjs'
+import Rx from 'rxjs/Rx';
 
+console.log(Rx)
 console.log('combineAll');
 const source = Rx.Observable.interval(1000).take(2);
 const example = source.map(val => Rx.Observable.interval(1000) .map(i => `Result (${val}): ${i}`) .take(5) );
