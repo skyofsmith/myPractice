@@ -1,4 +1,4 @@
-import Rx from 'rxjs/Rx';
+import Rx from 'rxjs';
 
 console.log(Rx)
 console.log('combineAll');
