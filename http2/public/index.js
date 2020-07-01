@@ -7,10 +7,18 @@ document.body.append(h1);
 function getImageAndThenAppendToBody(index) {
   fetch('./ohmyzsh.png?index=' + index)
     .then(res => {
-      return res.json();
+      return res.blob();
     })
     .then(res => {
-      console.log(res);
+      const img = new Image()
+      let objectURL = URL.createObjectURL(res);
+      img.src = objectURL;
+      const div = document.createElement('div');
+      const span = document.createElement('span');
+      span.innerText = index;
+      div.append(span);
+      div.append(img);
+      document.body.append(div);
     })
 }
 
