@@ -8,3 +8,5 @@ node_modules/
 *.rar
 /.metadata/
 .project
+.cache
+dist
