@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>empty</title>
+</head>
+<body>
+
+<a href="../index.html">creation</a>
+<h1>empty</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { empty } from 'rxjs';
+
+// 输出: 'Complete!'
+const subscribe = empty().subscribe({
+  next: () => console.log('Next'),
+  complete: () => console.log('Complete!')
+});
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+<pre>
+    <code>
+// RxJS v6+
+import { interval, fromEvent, merge, empty } from 'rxjs';
+import { switchMap, scan, takeWhile, startWith, mapTo } from 'rxjs/operators';
+
+const countdownSeconds = 10;
+const setHTML = id => val => (document.getElementById(id).innerHTML = val);
+const pauseButton = document.getElementById('pause');
+const resumeButton = document.getElementById('resume');
+const interval$ = interval(1000).pipe(mapTo(-1));
+
+const pause$ = fromEvent(pauseButton, 'click').pipe(mapTo(false));
+const resume$ = fromEvent(resumeButton, 'click').pipe(mapTo(true));
+
+const timer$ = merge(pause$, resume$)
+  .pipe(
+    startWith(true),
+    // 如果定时器暂停，则返回空的 Observable
+    switchMap(val => (val ? interval$ : empty())),
+    scan((acc, curr) => (curr ? curr + acc : acc), countdownSeconds),
+    takeWhile(v => v >= 0)
+  )
+  .subscribe(setHTML('remaining'));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<script src="./index.js"></script>
+</body>
+</html>

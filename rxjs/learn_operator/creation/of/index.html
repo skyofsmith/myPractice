@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>of</title>
+</head>
+<body>
+<a href="../index.html">creation</a>
+<h1>of</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { of } from 'rxjs';
+//emits any number of provided values in sequence
+const source = of(1, 2, 3, 4, 5);
+//output: 1,2,3,4,5
+const subscribe = source.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+<pre>
+    <code>
+// RxJS v6+
+import { of } from 'rxjs';
+//emits values of any type
+const source = of({ name: 'Brian' }, [1, 2, 3], function hello() {
+  return 'Hello';
+});
+//output: {name: 'Brian'}, [1,2,3], function hello() { return 'Hello' }
+const subscribe = source.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>

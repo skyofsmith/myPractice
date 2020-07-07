@@ -1,18 +1,18 @@
 {
-  "name": "learn_operator",
+  "name": "t-operator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel serve ./index.html"
+    "dev": "parcel serve index.html"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "rxjs": "^6.5.5"
-  },
+  "license": "MIT",
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "rxjs": "^6.6.0"
   }
 }
