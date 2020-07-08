@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>every</title>
+</head>
+<body>
+<a href="../index.html">creation</a>
+<h1>every</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { every } from 'rxjs/operators';
+import { of } from 'rxjs';
+​
+//emit 5 values
+const source = of(1, 2, 3, 4, 5);
+const example = source.pipe(
+  //is every value even?
+  every(val => val % 2 === 0)
+);
+//output: false
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+  <code>
+// RxJS v6+
+import { every } from 'rxjs/operators';
+import { of } from 'rxjs';
+​
+//emit 5 values
+const allEvens = of(2, 4, 6, 8, 10);
+const example = allEvens.pipe(
+  //is every value even?
+  every(val => val % 2 === 0)
+);
+//output: true
+const subscribe = example.subscribe(val => console.log(val));
+  </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<pre>
+  <code>
+// RxJS v6+
+console.clear();
+import { concat, of } from 'rxjs';
+import { every, delay, tap } from 'rxjs/operators';
+​
+const log = console.log;
+const returnCode = request => (Number.isInteger(request) ? 200 : 400);
+const fakeRequest = request =>
+  of({ code: returnCode(request) }).pipe(
+    tap(_ => log(request)),
+    delay(1000)
+  );
+​
+const apiCalls$ = concat(
+  fakeRequest(1),
+  fakeRequest('invalid payload'),
+  fakeRequest(2) //this won't execute as every will return false for previous line
+).pipe(
+  every(e => e.code === 200),
+  tap(e => log(`all request successful: ${e}`))
+);
+​
+apiCalls$.subscribe();
+  </code>
+</pre>
+<button id="btn3">demo3</button>
+<div id="demo3"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

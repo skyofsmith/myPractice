@@ -1,7 +1,5 @@
 import {interval, of, throwError} from 'rxjs';
-import { mergeMap, retry } from 'rxjs/operator';
-
-​
+import { mergeMap, retry } from 'rxjs/operators';
 import {clickAndPrint} from '../../utils/events';
 
 clickAndPrint('#btn1', '#demo1', print => {

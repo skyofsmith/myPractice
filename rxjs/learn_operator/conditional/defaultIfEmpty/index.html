@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>defaultIfEmpty</title>
+</head>
+<body>
+<a href="../index.html">Conditional</a>
+<h1>defaultIfEmpty</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { defaultIfEmpty } from 'rxjs/operators';
+import { of } from 'rxjs';
+​
+//emit 'Observable.of() Empty!' when empty, else any values from source
+const exampleOne = of().pipe(defaultIfEmpty('Observable.of() Empty!'));
+//output: 'Observable.of() Empty!'
+const subscribe = exampleOne.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { defaultIfEmpty } from 'rxjs/operators';
+import { empty } from 'rxjs';
+​
+//emit 'Observable.empty()!' when empty, else any values from source
+const example = empty().pipe(defaultIfEmpty('Observable.empty()!'));
+//output: 'Observable.empty()!'
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<pre>
+    <code>
+import { defaultIfEmpty } from 'rxjs/operators';
+import { from } from 'rxjs';
+//emit 'Observable.empty()!' when empty, else any values from source
+const example = from(new Array(3)).pipe(defaultIfEmpty('Observable.empty()!'));
+//output: 'Observable.empty()!'
+const subscribe = example.subscribe(print);
+    </code>
+</pre>
+<button id="btn3">demo3</button>
+<div id="demo3"></div>
+
+<script src="./index.js"></script>
+</body>
+</html>
