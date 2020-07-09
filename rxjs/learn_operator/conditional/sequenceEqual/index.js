@@ -1,6 +1,6 @@
 import {clickAndPrint} from '../../utils/events'
-import { from, fromEvent } from 'rxjs';
-import { sequenceEqual, map, bufferCount, mergeMap, tap } from 'rxjs/operators';
+import { from, fromEvent, of } from 'rxjs';
+import { sequenceEqual, map, bufferCount, mergeMap, tap, switchMap } from 'rxjs/operators';
 
 clickAndPrint('#btn1', '#demo1', print => {
   const expectedSequence = from([4, 5, 6]);
