@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>debounce</title>
+</head>
+<body>
+<a href="../index.html">Filtering</a>
+<h1>debounce</h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { of, timer } from 'rxjs';
+import { debounce } from 'rxjs/operators';
+​
+//emit four strings
+const example = of('WAIT', 'ONE', 'SECOND', 'Last will display');
+/*
+    Only emit values after a second has passed between the last emission,
+    throw away all other values
+*/
+const debouncedExample = example.pipe(debounce(() => timer(1000)));
+/*
+    In this example, all values but the last will be omitted
+    output: 'Last will display'
+*/
+const subscribe = debouncedExample.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval, timer } from 'rxjs';
+import { debounce } from 'rxjs/operators';
+​
+//emit value every 1 second, ex. 0...1...2
+const interval$ = interval(1000);
+//raise the debounce time by 200ms each second
+const debouncedInterval = interval$.pipe(debounce(val => timer(val * 200)));
+/*
+  After 5 seconds, debounce time will be greater than interval time,
+  all future values will be thrown away
+  output: 0...1...2...3...4......(debounce time over 1s, no values emitted)
+*/
+const subscribe = debouncedInterval.subscribe(val =>
+  console.log(`Example Two: ${val}`)
+);
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
