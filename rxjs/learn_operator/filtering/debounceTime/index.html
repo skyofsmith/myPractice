@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>debounceTime</title>
+</head>
+<body>
+<a href="../index.html">Filtering</a>
+<h1>debounceTime</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { fromEvent } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
+​
+// elem ref
+const searchBox = document.getElementById('search');
+​
+// streams
+const keyup$ = fromEvent(searchBox, 'keyup');
+​
+// wait .5s between keyups to emit current value
+keyup$
+  .pipe(
+    map((i: any) => i.currentTarget.value),
+    debounceTime(500)
+  )
+  .subscribe(console.log);
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<input type="text" id="search">
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
