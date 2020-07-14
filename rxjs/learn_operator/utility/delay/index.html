@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>delay</title>
+</head>
+<body>
+<a href="../index.html">utility</a>
+<h1>delay</h1>
+<pre>
+    <code>
+import { fromEvent, of } from 'rxjs';
+import { mergeMap, delay, takeUntil } from 'rxjs/operators';
+​
+const mousedown$ = fromEvent(document, 'mousedown');
+const mouseup$ = fromEvent(document, 'mouseup');
+​
+mousedown$
+  .pipe(mergeMap(event => of(event).pipe(delay(700), takeUntil(mouseup$))))
+  .subscribe(event => console.log('Long Press!', event));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { of, merge } from 'rxjs';
+import { mapTo, delay } from 'rxjs/operators';
+​
+//emit one item
+const example = of(null);
+//delay output of each by an extra second
+const message = merge(
+  example.pipe(mapTo('Hello')),
+  example.pipe(mapTo('World!'), delay(1000)),
+  example.pipe(mapTo('Goodbye'), delay(2000)),
+  example.pipe(mapTo('World!'), delay(3000))
+);
+//output: 'Hello'...'World!'...'Goodbye'...'World!'
+const subscribe = message.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

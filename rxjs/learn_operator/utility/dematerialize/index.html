@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dematerialize</title>
+</head>
+<body>
+<a href="../index.html">utility</a>
+<h1>dematerialize</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { from, Notification } from 'rxjs';
+import { dematerialize } from 'rxjs/operators';
+
+//emit next and error notifications
+const source = from([
+  Notification.createNext('SUCCESS!'),
+  Notification.createError('ERROR!')
+]).pipe(
+  //turn notification objects into notification values
+  dematerialize()
+);
+
+//output: 'NEXT VALUE: SUCCESS' 'ERROR VALUE: 'ERROR!'
+const subscription = source.subscribe({
+  next: val => console.log(`NEXT VALUE: ${val}`),
+  error: val => console.log(`ERROR VALUE: ${val}`)
+});
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>do</title>
+</head>
+<body>
+<a href="../index.html">utility</a>
+<h1>do</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { of } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+​
+const source = of(1, 2, 3, 4, 5);
+// transparently log values from source with 'tap'
+const example = source.pipe(
+  tap(val => console.log(`BEFORE MAP: ${val}`)),
+  map(val => val + 10),
+  tap(val => console.log(`AFTER MAP: ${val}`))
+);
+​
+//'tap' does not transform values
+//output: 11...12...13...14...15
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { of } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+​
+const source = of(1, 2, 3, 4, 5);
+​
+// tap also accepts an object map to log next, error, and complete
+const example = source
+  .pipe(
+    map(val => val + 10),
+    tap({
+      next: val => {
+        // on next 11, etc.
+        console.log('on next', val);
+      },
+      error: error => {
+        console.log('on error', error.message);
+      },
+      complete: () => console.log('on complete')
+    })
+  )
+  // output: 11, 12, 13, 14, 15
+  .subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
