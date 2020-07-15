@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>timeInterval</title>
+</head>
+<body>
+<a href="../index.html">utility</a>
+<h1>timeInterval</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { fromEvent } from 'rxjs';
+import { timeInterval, tap } from 'rxjs/operators';
+
+fromEvent(document, 'mousedown')
+    .pipe(timeInterval(), tap(console.log))
+    .subscribe(
+    i =>
+        (document.body.innerText = `milliseconds since last click: ${i.interval}`)
+    );
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

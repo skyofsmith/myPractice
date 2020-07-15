@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>shareReplay</title>
+</head>
+<body>
+<a href="../index.html">Multicasting</a>
+<h1>shareReplay</h1>
+<pre>
+    <code>
+import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { pluck, share, shareReplay, tap } from 'rxjs/operators';
+
+// simulate url change with subject
+const routeEnd = new Subject<{data: any, url: string}>();
+
+// grab url and share with subscribers
+const lastUrl = routeEnd.pipe(
+    tap(_ => console.log('executed')),
+    pluck('url'),
+    // defaults to all values so we set it to just keep and replay last one
+    shareReplay(1)
+);
+
+// requires initial subscription
+const initialSubscriber = lastUrl.subscribe(console.log);
+
+// simulate route change
+// logged: 'executed', 'my-path'
+routeEnd.next({data: {}, url: 'my-path'});
+
+// logged: 'my-path'
+const lateSubscriber = lastUrl.subscribe(console.log);
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

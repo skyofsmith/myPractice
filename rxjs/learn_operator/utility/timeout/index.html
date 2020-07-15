@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">utility</a>
+<h1></h1>
+<pre>
+    <code>
+// RxJS v6+
+import { of } from 'rxjs';
+import { concatMap, timeout, catchError, delay } from 'rxjs/operators';
+
+// simulate request
+function makeRequest(timeToDelay) {
+    return of('Request Complete!').pipe(delay(timeToDelay));
+}
+
+of(4000, 3000, 2000)
+    .pipe(
+    concatMap(duration =>
+        makeRequest(duration).pipe(
+        timeout(2500),
+        catchError(error => of(`Request timed out after: ${duration}`))
+        )
+    )
+    )
+    /*
+    *  "Request timed out after: 4000"
+    *  "Request timed out after: 3000"
+    *  "Request Complete!"
+    */
+    .subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
