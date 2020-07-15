@@ -20,6 +20,7 @@ clickAndPrint('#btn1', '#demo1', print => {
   // simulate route change
   // logged: 'executed', 'my-path'
   routeEnd.next({data: {}, url: 'my-path'});
+  routeEnd.next({data: {}, url: 'my-path2'});
   
   // logged: 'my-path'
   const lateSubscriber = lastUrl.subscribe(print);

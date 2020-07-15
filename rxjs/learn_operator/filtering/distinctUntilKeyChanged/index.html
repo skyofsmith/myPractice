@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">Filtering</a>
+<h1></h1>
+<pre>
+    <code>
+// RxJS v6+
+import { from } from 'rxjs';
+import { distinctUntilKeyChanged } from 'rxjs/operators';
+​
+// only output distinct values, based on the last emitted value
+const source$ = from([
+  { name: 'Brian' },
+  { name: 'Joe' },
+  { name: 'Joe' },
+  { name: 'Sue' }
+]);
+​
+source$
+  // custom compare based on name property
+  .pipe(distinctUntilKeyChanged('name'))
+  // output: { name: 'Brian }, { name: 'Joe' }, { name: 'Sue' }
+  .subscribe(console.log);
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { fromEvent } from 'rxjs';
+import { distinctUntilKeyChanged, pluck } from 'rxjs/operators';
+​
+const keys$ = fromEvent(document, 'keyup').pipe(
+  distinctUntilKeyChanged < KeyboardEvent > 'code',
+  pluck('key')
+);
+​
+keys$.subscribe(console.log);
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
