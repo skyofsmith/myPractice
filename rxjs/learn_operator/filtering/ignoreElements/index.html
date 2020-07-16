@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ignoreElements</title>
+</head>
+<body>
+<a href="../index.html">Filtering</a>
+<h1>ignoreElements</h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval } from 'rxjs';
+import { take, ignoreElements } from 'rxjs/operators';
+
+//emit value every 100ms
+const source = interval(100);
+//ignore everything but complete
+const example = source.pipe(take(5), ignoreElements());
+//output: "COMPLETE!"
+const subscribe = example.subscribe(
+    val => console.log(`NEXT: ${val}`),
+    val => console.log(`ERROR: ${val}`),
+    () => console.log('COMPLETE!')
+);
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval, throwError, of } from 'rxjs';
+import { mergeMap, ignoreElements } from 'rxjs/operators';
+
+//emit value every 100ms
+const source = interval(100);
+//ignore everything but error
+const error = source.pipe(
+    mergeMap(val => {
+    if (val === 4) {
+        return throwError(`ERROR AT ${val}`);
+    }
+    return of(val);
+    }),
+    ignoreElements()
+);
+//output: "ERROR: ERROR AT 4"
+const subscribe = error.subscribe(
+    val => console.log(`NEXT: ${val}`),
+    val => console.log(`ERROR: ${val}`),
+    () => console.log('SECOND COMPLETE!')
+);
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>first</title>
+</head>
+<body>
+<a href="../index.html">Filtering</a>
+<h1>first</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { from } from 'rxjs';
+import { first } from 'rxjs/operators';
+
+const source = from([1, 2, 3, 4, 5]);
+//no arguments, emit first value
+const example = source.pipe(first());
+//output: "First value: 1"
+const subscribe = example.subscribe(val => console.log(`First value: ${val}`));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { from } from 'rxjs';
+import { first } from 'rxjs/operators';
+
+const source = from([1, 2, 3, 4, 5]);
+//emit first item to pass test
+const example = source.pipe(first(num => num === 5));
+//output: "First to pass test: 5"
+const subscribe = example.subscribe(val =>
+  console.log(`First to pass test: ${val}`)
+);
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { from } from 'rxjs';
+import { first } from 'rxjs/operators';
+
+const source = from([1, 2, 3, 4, 5]);
+//no value will pass, emit default
+const example = source.pipe(first(val => val > 5, 'Nothing'));
+//output: 'Nothing'
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn3">demo3</button>
+<div id="demo3"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
