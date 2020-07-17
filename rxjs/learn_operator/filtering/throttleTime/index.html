@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">Filtering</a>
+<h1></h1>
+<pre>
+    <code>
+// RxJS v6+
+import { interval } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
+
+// emit value every 1 second
+const source = interval(1000);
+/*
+    emit the first value, then ignore for 5 seconds. repeat...
+*/
+const example = source.pipe(throttleTime(5000));
+// output: 0...6...12
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval, asyncScheduler } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
+
+const source = interval(1000);
+/*
+    emit the first value, then ignore for 5 seconds. repeat...
+*/
+const example = source.pipe(
+    throttleTime(5000, asyncScheduler, { trailing: true })
+);
+// output: 5...11...17
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
