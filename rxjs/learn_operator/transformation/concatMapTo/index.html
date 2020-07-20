@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1></h1>
+<pre>
+    <code>
+// RxJS v6+
+import { of, interval } from 'rxjs';
+import { concatMapTo, delay, take } from 'rxjs/operators';
+​
+//emit value every 2 seconds
+const sampleInterval = interval(500).pipe(take(5));
+const fakeRequest = of('Network request complete').pipe(delay(3000));
+//wait for first to complete before next is subscribed
+const example = sampleInterval.pipe(concatMapTo(fakeRequest));
+//result
+//output: Network request complete...3s...Network request complete'
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval } from 'rxjs';
+import { concatMapTo, take } from 'rxjs/operators';
+//emit value every 2 seconds
+const interval$ = interval(2000);
+//emit value every second for 5 seconds
+const source = interval(1000).pipe(take(5));
+/*
+  ***Be Careful***: In situations like this where the source emits at a faster pace
+  than the inner observable completes, memory issues can arise.
+  (interval emits every 1 second, basicTimer completes every 5)
+*/
+// basicTimer will complete after 5 seconds, emitting 0,1,2,3,4
+const example = interval$.pipe(
+  concatMapTo(
+    source,
+    (firstInterval, secondInterval) => `${firstInterval} ${secondInterval}`
+  )
+);
+/*
+  output: 0 0
+          0 1
+          0 2
+          0 3
+          0 4
+          1 0
+          1 1
+          continued...
+​
+*/
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

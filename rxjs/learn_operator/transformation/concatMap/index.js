@@ -25,7 +25,6 @@ clickAndPrint('#btn1', '#demo1', print => {
 });
 
 clickAndPrint('#btn2', '#demo2', print => {
-
   //emit 'Hello' and 'Goodbye'
   const source = of('Hello', 'Goodbye');
   //example with promise
@@ -34,12 +33,11 @@ clickAndPrint('#btn2', '#demo2', print => {
   const example = source.pipe(concatMap(val => examplePromise(val)));
   //output: 'Example w/ Promise: 'Hello World', Example w/ Promise: 'Goodbye World'
   const subscribe = example.subscribe(val =>
-    print('Example w/ Promise:', val)
+    print(`Example w/ Promise:, ${val}`)
   );
 });
 
 clickAndPrint('#btn3', '#demo3', print => {
-
   //emit 'Hello' and 'Goodbye'
   const source = of('Hello', 'Goodbye');
   //example with promise
@@ -53,7 +51,7 @@ clickAndPrint('#btn3', '#demo3', print => {
   );
   //output: 'Example w/ Selector: 'Hello w/ Selector', Example w/ Selector: 'Goodbye w/ Selector'
   const subscribe = example.subscribe(val =>
-    print('Example w/ Selector:', val)
+    print(`Example w/ Selector:, ${val}`)
   );
 
 });
