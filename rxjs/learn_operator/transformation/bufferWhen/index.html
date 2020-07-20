@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1></h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval } from 'rxjs';
+import { bufferWhen } from 'rxjs/operators';
+
+//emit value every 1 second
+const oneSecondInterval = interval(1000);
+//return an observable that emits value every 5 seconds
+const fiveSecondInterval = () => interval(5000);
+//every five seconds, emit buffered values
+const bufferWhenExample = oneSecondInterval.pipe(
+    bufferWhen(fiveSecondInterval)
+);
+//log values
+//ex. output: [0,1,2,3]...[4,5,6,7,8]
+const subscribe = bufferWhenExample.subscribe(val =>
+    console.log('Emitted Buffer: ', val)
+);
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1></h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval } from 'rxjs';
+import { bufferTime } from 'rxjs/operators';
+
+//Create an observable that emits a value every 500ms
+const source = interval(500);
+//After 2 seconds have passed, emit buffered values as an array
+const example = source.pipe(bufferTime(2000));
+//Print values to console
+//ex. output [0,1,2]...[3,4,5,6]
+const subscribe = example.subscribe(val =>
+    console.log('Buffered with Time:', val)
+);
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval } from 'rxjs';
+import { bufferTime } from 'rxjs/operators';
+
+//Create an observable that emits a value every 500ms
+const source = interval(500);
+/*
+bufferTime also takes second argument, when to start the next buffer (time in ms)
+for instance, if we have a bufferTime of 2 seconds but second argument (bufferCreationInterval) of 1 second:
+ex. output: [0,1,2]...[1,2,3,4,5]...[3,4,5,6,7]
+*/
+const example = source.pipe(bufferTime(2000, 1000));
+//Print values to console
+const subscribe = example.subscribe(val =>
+    console.log('Start Buffer Every 1s:', val)
+);
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

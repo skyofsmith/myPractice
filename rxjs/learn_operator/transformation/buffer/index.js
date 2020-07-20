@@ -13,7 +13,10 @@ clickAndPrint('#btn1', '#demo1', print => {
     .pipe(
       buffer(clicks$.pipe(throttleTime(250))),
       // if array is greater than 1, double click occured
-      filter(clickArray => clickArray.length > 1)
+      filter(clickArray => {
+        print(clickArray)
+        return clickArray.length > 1
+      })
     )
     .subscribe(() => print('Double Click!'));
 });
@@ -30,6 +33,6 @@ clickAndPrint('#btn2', '#demo2', print => {
 //Print values to console
 //ex. output: [1,2,3] ... [4,5,6,7,8]
   const subscribe = myBufferedInterval.subscribe(val =>
-    print(' Buffered Values:', val)
+    print(`Buffered Values: , ${val}`)
   );
 });

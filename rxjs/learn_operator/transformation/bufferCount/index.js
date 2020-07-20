@@ -1,5 +1,5 @@
 import {clickAndPrint} from '../../utils/events'
-import { interval } from 'rxjs';
+import { interval, fromEvent, of } from 'rxjs';
 import { bufferCount, map, mergeMap, tap } from 'rxjs/operators';
 
 clickAndPrint('#btn1', '#demo1', print => {
@@ -10,7 +10,7 @@ clickAndPrint('#btn1', '#demo1', print => {
   //Print values to console
   //ex. output [0,1,2]...[3,4,5]
   const subscribe = bufferThree.subscribe(val =>
-    print('Buffered Values:', val)
+    print(`Buffered Values:, ${val}`)
   );
 });
 
@@ -37,7 +37,7 @@ clickAndPrint('#btn2', '#demo2', print => {
   const bufferEveryOne = source.pipe(bufferCount(3, 1));
 //Print values to console
   const subscribe = bufferEveryOne.subscribe(val =>
-    print('Start Buffer Every 1:', val)
+    print(`Start Buffer Every 1:, ${val}`)
   );
 });
 
