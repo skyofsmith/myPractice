@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>expand</title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1>expand</h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval, of } from 'rxjs';
+import { expand, take } from 'rxjs/operators';
+
+//emit 2
+const source = of(2);
+const example = source.pipe(
+    //recursively call supplied function
+    expand(val => {
+    //2,3,4,5,6
+    console.log(`Passed value: ${val}`);
+    //3,4,5,6
+    return of(1 + val);
+    }),
+    //call 5 times
+    take(5)
+);
+/*
+    "RESULT: 2"
+    "Passed value: 2"
+    "RESULT: 3"
+    "Passed value: 3"
+    "RESULT: 4"
+    "Passed value: 4"
+    "RESULT: 5"
+    "Passed value: 5"
+    "RESULT: 6"
+    "Passed value: 6"
+*/
+//output: 2,3,4,5,6
+const subscribe = example.subscribe(val => console.log(`RESULT: ${val}`));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

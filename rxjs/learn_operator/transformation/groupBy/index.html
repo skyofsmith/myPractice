@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>groupBy</title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1>groupBy</h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { from } from 'rxjs';
+import { groupBy, mergeMap, toArray } from 'rxjs/operators';
+
+const people = [
+    { name: 'Sue', age: 25 },
+    { name: 'Joe', age: 30 },
+    { name: 'Frank', age: 25 },
+    { name: 'Sarah', age: 35 }
+];
+//emit each person
+const source = from(people);
+//group by age
+const example = source.pipe(
+    groupBy(person => person.age),
+    // return each item in group as array
+    mergeMap(group => group.pipe(toArray()))
+);
+/*
+    output:
+    [{age: 25, name: "Sue"},{age: 25, name: "Frank"}]
+    [{age: 30, name: "Joe"}]
+    [{age: 35, name: "Sarah"}]
+*/
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { from, of, zip } from 'rxjs';
+import { groupBy, mergeMap, toArray } from 'rxjs/operators';
+
+const people = [
+    { name: 'Sue', age: 25 },
+    { name: 'Joe', age: 30 },
+    { name: 'Frank', age: 25 },
+    { name: 'Sarah', age: 35 }
+];
+
+from(people)
+    .pipe(
+    groupBy(
+        person => person.age,
+        p => p.name
+    ),
+    mergeMap(group => zip(of(group.key), group.pipe(toArray())))
+    )
+    .subscribe(console.log);
+
+/*
+    output:
+    [25, ["Sue", "Frank"]]
+    [30, ["Joe"]]
+    [35, ["Sarah"]]
+*/
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

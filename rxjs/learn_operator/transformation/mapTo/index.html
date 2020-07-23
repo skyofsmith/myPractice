@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mapTo</title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1>mapTo</h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
+
+//emit value every two seconds
+const source = interval(2000);
+//map all emissions to one value
+const example = source.pipe(mapTo('HELLO WORLD!'));
+//output: 'HELLO WORLD!'...'HELLO WORLD!'...'HELLO WORLD!'...
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { fromEvent } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
+
+//emit every click on document
+const source = fromEvent(document, 'click');
+//map all emissions to one value
+const example = source.pipe(mapTo('GOODBYE WORLD!'));
+//output: (click)'GOODBYE WORLD!'...
+const subscribe = example.subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
