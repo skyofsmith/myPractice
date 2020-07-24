@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>partition</title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1>partition</h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { from, merge } from 'rxjs';
+import { partition, map } from 'rxjs/operators';
+
+const source = from([1, 2, 3, 4, 5, 6]);
+//first value is true, second false
+const [evens, odds] = source.pipe(partition(val => val % 2 === 0));
+/*
+    Output:
+    "Even: 2"
+    "Even: 4"
+    "Even: 6"
+    "Odd: 1"
+    "Odd: 3"
+    "Odd: 5"
+*/
+const subscribe = merge(
+    evens.pipe(map(val => `Even: ${val}`)),
+    odds.pipe(map(val => `Odd: ${val}`))
+).subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { merge, of, from } from 'rxjs';
+import { map, partition, catchError } from 'rxjs/operators';
+
+const source = from([1, 2, 3, 4, 5, 6]);
+//if greater than 3 throw
+const example = source.pipe(
+    map(val => {
+    if (val > 3) {
+        throw `${val} greater than 3!`;
+    }
+    return { success: val };
+    }),
+    catchError(val => of({ error: val }))
+);
+//split on success or error
+const [success, error] = example.pipe(partition(res => res.success));
+/*
+    Output:
+    "Success! 1"
+    "Success! 2"
+    "Success! 3"
+    "Error! 4 greater than 3!"
+*/
+const subscribe = merge(
+    success.pipe(map(val => `Success! ${val.success}`)),
+    error.pipe(map(val => `Error! ${val.error}`))
+).subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="demo2"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6.5+
+import { merge, of, from, partition } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
+const source = from([1, 2, 3, 4, 5, 6]);
+//if greater than 3 throw
+const example = source.pipe(
+    map(val => {
+    if (val > 3) {
+        throw `${val} greater than 3!`;
+    }
+    return { success: val };
+    }),
+    catchError(val => of({ error: val }))
+);
+// split on success or error
+const [success, error] = partition(example, res => res.success);
+/*
+    Output:
+    "Success! 1"
+    "Success! 2"
+    "Success! 3"
+    "Error! 4 greater than 3!"
+*/
+const subscribe = merge(
+    success.pipe(map(val => `Success! ${val.success}`)),
+    error.pipe(map(val => `Error! ${val.error}`))
+).subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn3">demo3</button>
+<div id="demo3"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

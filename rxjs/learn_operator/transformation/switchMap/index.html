@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>switchMap</title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1>switchMap</h1>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval, fromEvent } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+fromEvent(document, 'click')
+    .pipe(
+    // restart counter on every click
+    switchMap(() => interval(1000))
+    )
+    .subscribe(console.log);
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { interval, fromEvent, merge, empty } from 'rxjs';
+import { switchMap, scan, takeWhile, startWith, mapTo } from 'rxjs/operators';
+
+const COUNTDOWN_SECONDS = 10;
+
+// elem refs
+const remainingLabel = document.getElementById('remaining');
+const pauseButton = document.getElementById('pause');
+const resumeButton = document.getElementById('resume');
+
+// streams
+const interval$ = interval(1000).pipe(mapTo(-1));
+const pause$ = fromEvent(pauseButton, 'click').pipe(mapTo(false));
+const resume$ = fromEvent(resumeButton, 'click').pipe(mapTo(true));
+
+const timer$ = merge(pause$, resume$)
+    .pipe(
+    startWith(true),
+    switchMap(val => (val ? interval$ : empty())),
+    scan((acc, curr) => (curr ? curr + acc : acc), COUNTDOWN_SECONDS),
+    takeWhile(v => v >= 0)
+    )
+    .subscribe((val: any) => (remainingLabel.innerHTML = val));
+    </code>
+</pre>
+<button id="btn2">demo2</button>
+<div id="remaining">remaining</div>
+<div id="pause">pause</div>
+<div id="resume">resume</div>
+<div id="demo2"></div>
+<hr>
+
+<pre>
+    <code>
+// RxJS v6+
+import { timer, interval } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+// switch to new inner observable when source emits, emit result of project function
+timer(0, 5000)
+    .pipe(
+    switchMap(
+        _ => interval(2000),
+        (outerValue, innerValue, outerIndex, innerIndex) => ({
+        outerValue,
+        innerValue,
+        outerIndex,
+        innerIndex
+        })
+    )
+    )
+    /*
+    Output:
+    {outerValue: 0, innerValue: 0, outerIndex: 0, innerIndex: 0}
+    {outerValue: 0, innerValue: 1, outerIndex: 0, innerIndex: 1}
+    {outerValue: 1, innerValue: 0, outerIndex: 1, innerIndex: 0}
+    {outerValue: 1, innerValue: 1, outerIndex: 1, innerIndex: 1}
+*/
+    .subscribe(console.log);
+    </code>
+</pre>
+<button id="btn3">demo3</button>
+<div id="demo3"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

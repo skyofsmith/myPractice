@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1></h1>
+<pre>
+    <code>
+// RxJS v6+
+import { fromEvent, interval } from 'rxjs';
+import { mergeScan, take, takeUntil, map, scan } from 'rxjs/operators';
+
+// reference
+const durationElem = document.getElementById('duration');
+
+// streams
+const mouseDown$ = fromEvent(document, 'mousedown');
+const mouseUp$ = fromEvent(document, 'mouseup');
+
+// accumulate time mouse held down over time
+mouseDown$
+  .pipe(
+    mergeScan((acc, curr) => {
+      return interval(1000).pipe(
+        scan((a, _) => ++a, 0),
+        map((val: any) => val + acc),
+        takeUntil(mouseUp$)
+      );
+    }, 0)
+    // output: 1s...2s...3s...4s...
+  )
+  .subscribe(val => (durationElem.innerHTML = `${val}s`));
+    </code>
+</pre>
+<div id="duration"></div>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
