@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1></h1>
+<pre>
+    <code>
+// RxJS v6+
+import { interval, timer } from 'rxjs';
+import { windowWhen, tap, mergeAll } from 'rxjs/operators';
+
+//emit immediately then every 1s
+const source = timer(0, 1000);
+const example = source.pipe(
+  //close window every 5s and emit observable of collected values from source
+  windowWhen(() => interval(5000)),
+  tap(_ => console.log('NEW WINDOW!'))
+);
+
+const subscribeTwo = example
+  .pipe(
+    //window emits nested observable
+    mergeAll()
+    /*
+      output:
+      "NEW WINDOW!"
+      0
+      1
+      2
+      3
+      4
+      "NEW WINDOW!"
+      5
+      6
+      7
+      8
+      9
+    */
+  )
+  .subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>

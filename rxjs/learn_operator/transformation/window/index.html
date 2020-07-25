@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window</title>
+</head>
+<body>
+<a href="../index.html">Transformation</a>
+<h1>window</h1>
+<pre>
+    <code>
+// RxJS v6+
+import { timer, interval } from 'rxjs';
+import { window, scan, mergeAll } from 'rxjs/operators';
+
+//emit immediately then every 1s
+const source = timer(0, 1000);
+const example = source.pipe(window(interval(3000)));
+const count = example.pipe(scan((acc, curr) => acc + 1, 0));
+/*
+  "Window 1:"
+  0
+  1
+  2
+  "Window 2:"
+  3
+  4
+  5
+  ...
+*/
+const subscribe = count.subscribe(val => console.log(`Window ${val}:`));
+const subscribeTwo = example
+  .pipe(mergeAll())
+  .subscribe(val => console.log(val));
+    </code>
+</pre>
+<button id="btn1">demo1</button>
+<div id="demo1"></div>
+<hr>
+
+<script src="./index.js"></script>
+</body>
+</html>
