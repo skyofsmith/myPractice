@@ -1,24 +1,25 @@
-const xs = xstream.default;
-const {div, input, p, makeDOMDriver} = CycleDOM;
+import xs from 'xstream'
+import {run} from '@cycle/run';
+import {div, button, p, makeDOMDriver} from '@cycle/dom'
 
 function main(sources) {
-  console.log('function main', sources);
-  const sinks = {
-    DOM: sources.DOM
-      .select('input').events('change')
-      .map(ev => ev.target.checked)
-      .startWith(false)
-      .map(toggled => {
-        console.log('toggled is ', toggled)
-        return div([
-          input({attrs: {type: 'checkbox'}}), 'Toggle me',
-          p(`${toggled ? 'ON' : 'off'}`)
+    const action$ = xs.merge(
+        sources.DOM.select('.dec').events('click').mapTo(-1),
+        sources.DOM.select('.inc').events('click').mapTo(+1)
+    );
+    const count$ = action$.fold((x, y) => x + y, 0);
+    const vdom$ = count$.map(count =>
+        div([
+            button('.dec', 'Decrement'),
+            button('.inc', 'Increment'),
+            p('Counter: ' + count)
         ])
-      })
-  };
-  return sinks;
+    );
+    return {
+        DOM: vdom$
+    };
 }
 
-Cycle.run(main, {
-  DOM: makeDOMDriver('#app')
+run(main, {
+    DOM: makeDOMDriver('#app')
 });

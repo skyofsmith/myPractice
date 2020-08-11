@@ -1,5 +1,6 @@
-const xs = xstream.default;
-const {div, button, p, makeDOMDriver} = CycleDOM;
+import xs from 'xstream';
+import {run} from '@cycle/run';
+import {div, button, p, makeDOMDriver} from '@cycle/dom';
 
 function main(sources) {
   const action$ = xs.merge(
@@ -19,6 +20,6 @@ function main(sources) {
   };
 }
 
-Cycle.run(main, {
+run(main, {
   DOM: makeDOMDriver('#app')
 });
