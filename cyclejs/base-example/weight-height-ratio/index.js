@@ -21,9 +21,22 @@ function bmi(weight, height) {
   return Math.round(weight / (heightMeters * heightMeters))
 }
 
-function model(changeWeight$, changeHeight$) {
-  const weight$ = changeWeight$.startWith(70)
-  const height$ = changeHeight$.startWith(170)
+function intent(domSource) {
+  return {
+    changeWeight$: domSource
+      .select('.weight')
+      .events('input')
+      .map((ev) => ev.target.value),
+    changeHeight$: domSource
+      .select('.height')
+      .events('input')
+      .map((ev) => ev.target.value),
+  }
+}
+
+function model(actions) {
+  const weight$ = actions.changeWeight$.startWith(70)
+  const height$ = actions.changeHeight$.startWith(170)
 
   return xs.combine(weight$, height$).map(([weight, height]) => {
     return { weight, height, bmi: bmi(weight, height) }
@@ -41,21 +54,7 @@ function view(state$) {
 }
 
 function main(sources) {
-  const changeWeight$ = sources.DOM.select('.weight')
-    .events('input')
-    .map((ev) => ev.target.value)
-
-  const changeHeight$ = sources.DOM.select('.height')
-    .events('input')
-    .map((ev) => ev.target.value)
-
-  const state$ = model(changeWeight$, changeHeight$)
-
-  const vdom$ = view(state$)
-
-  return {
-    DOM: vdom$,
-  }
+  return { DOM: view(model(intent(sources.DOM))) }
 }
 
 run(main, {
