@@ -21,6 +21,15 @@ function bmi(weight, height) {
   return Math.round(weight / (heightMeters * heightMeters))
 }
 
+function model(changeWeight$, changeHeight$) {
+  const weight$ = changeWeight$.startWith(70)
+  const height$ = changeHeight$.startWith(170)
+
+  return xs.combine(weight$, height$).map(([weight, height]) => {
+    return { weight, height, bmi: bmi(weight, height) }
+  })
+}
+
 function view(state$) {
   return state$.map(({ weight, height, bmi }) =>
     div([
@@ -40,12 +49,7 @@ function main(sources) {
     .events('input')
     .map((ev) => ev.target.value)
 
-  const weight$ = changeWeight$.startWith(70)
-  const height$ = changeHeight$.startWith(170)
-
-  const state$ = xs.combine(weight$, height$).map(([weight, height]) => {
-    return { weight, height, bmi: bmi(weight, height) }
-  })
+  const state$ = model(changeWeight$, changeHeight$)
 
   const vdom$ = view(state$)
 
